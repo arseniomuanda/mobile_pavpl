@@ -8,12 +8,18 @@ class MRTextField extends StatelessWidget {
   final String? Function(String?)? validator;
 
   final String? initialValue;
-  final bool? readOnly;
+  final bool? readOnly, isEnabled;
   final bool isNumeber;
   final int linhas;
 
-  MRTextField.editable(
-      {this.initialValue, this.label, this.isNumeber = false, this.readOnly, this.controller, this.linhas = 1})
+  const MRTextField.editable(
+      {this.initialValue,
+      this.label,
+      this.isNumeber = false,
+      this.readOnly,
+      this.isEnabled,
+      this.controller,
+      this.linhas = 1})
       : hint = null,
         validator = null,
         isPassword = false;
@@ -23,10 +29,13 @@ class MRTextField extends StatelessWidget {
       required this.controller,
       this.label,
       this.validator,
-        this.isNumeber= false,
+      this.isNumeber = false,
       this.hint,
       this.isPassword = false,
-      this.readOnly = false, this.linhas = 1, this.initialValue})
+      this.readOnly = false,
+      this.isEnabled = true,
+      this.linhas = 1,
+      this.initialValue})
       : super(key: key);
 
   @override
@@ -37,6 +46,7 @@ class MRTextField extends StatelessWidget {
         height: 60,
         width: MediaQuery.of(context).size.width * 0.9,
         child: TextFormField(
+          enabled: isEnabled,
           minLines: 1,
           maxLines: linhas,
           obscureText: isPassword,

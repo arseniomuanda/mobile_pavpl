@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mobile_pavpl/views/auth/login_view.dart';
+import 'package:mobile_pavpl/views/auth/recover_pass_view.dart';
+import 'package:mobile_pavpl/views/auth/register_view.dart';
 import 'package:mobile_pavpl/views/home_view.dart';
 import 'package:mobile_pavpl/views/splash_view.dart';
 
@@ -7,7 +9,12 @@ abstract class MRRoutes {
   static const String home = '/home';
   static const String login = '/login';
   static const String register = '/register';
+  static const String passRecover = '/passRecover';
+
+
   static const String perfil = '/perfil';
+
+
   static const String cars = '/cars';
   static const String carsSeguro = '/carsSeguro';
   static const String pagamentos = '/pagamentos';
@@ -35,6 +42,10 @@ class MRRoute extends MRRoutes {
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case MRRoutes.home:
         return MaterialPageRoute(builder: (_) => const HomePage());
+      case MRRoutes.register:
+        return MaterialPageRoute(builder: (_) => const RegisterPage());
+      case MRRoutes.passRecover:
+        return MaterialPageRoute(builder: (_) => const RecoverPassPage());
       /*  case MRRoutes.agendarServico:
         return MaterialPageRoute(
           builder: (_) => AgendarServicoView(

@@ -1,5 +1,7 @@
+import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_pavpl/app/routing/route_handler.dart';
 import 'package:mobile_pavpl/widgets/text_field.dart';
 
 class LoginPage extends StatefulWidget {
@@ -11,6 +13,7 @@ class LoginPage extends StatefulWidget {
 
 class _LoginPageState extends State<LoginPage> {
   final biController = TextEditingController();
+  final passController = TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -50,10 +53,18 @@ class _LoginPageState extends State<LoginPage> {
                     hint: "123456789AZ123",
                   ),
                   MRTextField(
-                    controller: biController,
+                    isPassword: true,
+                    controller: passController,
                     label: "Palavra Pass",
                     hint: "****",
                   ),
+                  Align(
+                      alignment: Alignment.centerRight,
+                      child: TextButton(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, MRRoutes.passRecover),
+                        child: const Text("Esqueceu a Palavra Pass?"),
+                      )),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
                     child: Row(
@@ -65,6 +76,9 @@ class _LoginPageState extends State<LoginPage> {
                               text: 'Não tem conta? ',
                               children: [
                                 TextSpan(
+                                    recognizer: TapGestureRecognizer()
+                                      ..onTap = () => Navigator.pushNamed(
+                                          context, MRRoutes.register),
                                     text: "CRIAR CONTA",
                                     style: GoogleFonts.acme(
                                         fontSize: 14,
@@ -75,7 +89,8 @@ class _LoginPageState extends State<LoginPage> {
                         ),
                         const Spacer(),
                         ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () => Navigator.pushReplacementNamed(
+                                context, MRRoutes.home),
                             child: Text(
                               "Logar",
                               style: GoogleFonts.acme(fontSize: 20),
