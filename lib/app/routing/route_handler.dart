@@ -3,6 +3,8 @@ import 'package:mobile_pavpl/views/auth/login_view.dart';
 import 'package:mobile_pavpl/views/auth/recover_pass_view.dart';
 import 'package:mobile_pavpl/views/auth/register_view.dart';
 import 'package:mobile_pavpl/views/home_view.dart';
+import 'package:mobile_pavpl/views/profile.dart';
+import 'package:mobile_pavpl/views/scheduling/scheduling.dart';
 import 'package:mobile_pavpl/views/splash_view.dart';
 
 abstract class MRRoutes {
@@ -10,29 +12,9 @@ abstract class MRRoutes {
   static const String login = '/login';
   static const String register = '/register';
   static const String passRecover = '/passRecover';
-
-
-  static const String perfil = '/perfil';
-
-
-  static const String cars = '/cars';
-  static const String carsSeguro = '/carsSeguro';
-  static const String pagamentos = '/pagamentos';
-  static const String sobre = '/sobre';
-  static const String contacto = '/contacto';
-  static const String carSeguroProfile = '/carseguro_profile';
-  static const String carProfile = '/car_profile';
-  static const String servicer = '/servicer';
-  static const String addCar = '/add_car_page';
-  static const String carManagement = '/car_management';
-  static const String store = '/store';
-  static const String productProfile = '/product_profile';
-  static const String cart = '/cart';
-  static const String checkout = '/checkout';
-  static const String orders = '/orders';
   static const String splash = '/splash';
-  static const String agendarServico = '/agendar_servico';
-  static const String deleteAccount = '/delete_account';
+  static const String perfil = '/perfil';
+  static const String scheduling = '/scheduling';
 }
 
 class MRRoute extends MRRoutes {
@@ -41,11 +23,15 @@ class MRRoute extends MRRoutes {
       case MRRoutes.login:
         return MaterialPageRoute(builder: (_) => const LoginPage());
       case MRRoutes.home:
-        return MaterialPageRoute(builder: (_) => const HomePage());
+        return MaterialPageRoute(builder: (_) => HomePage());
       case MRRoutes.register:
         return MaterialPageRoute(builder: (_) => const RegisterPage());
       case MRRoutes.passRecover:
         return MaterialPageRoute(builder: (_) => const RecoverPassPage());
+      case MRRoutes.perfil:
+        return MaterialPageRoute(builder: (_) => const ProfilePage());
+      case MRRoutes.scheduling:
+        return MaterialPageRoute(builder: (_) => SchedulingPage());
       /*  case MRRoutes.agendarServico:
         return MaterialPageRoute(
           builder: (_) => AgendarServicoView(

@@ -4,6 +4,8 @@ class MRTextField extends StatelessWidget {
   final String? label;
   final String? hint;
   final bool isPassword;
+  final Icon? suffixIcon;
+  final IconButton? suffixIconButton;
   final TextEditingController? controller;
   final String? Function(String?)? validator;
 
@@ -17,6 +19,8 @@ class MRTextField extends StatelessWidget {
       this.label,
       this.isNumeber = false,
       this.readOnly,
+      this.suffixIcon,
+      this.suffixIconButton,
       this.isEnabled,
       this.controller,
       this.linhas = 1})
@@ -31,11 +35,13 @@ class MRTextField extends StatelessWidget {
       this.validator,
       this.isNumeber = false,
       this.hint,
+      this.suffixIcon,
       this.isPassword = false,
       this.readOnly = false,
       this.isEnabled = true,
       this.linhas = 1,
-      this.initialValue})
+      this.initialValue,
+      this.suffixIconButton})
       : super(key: key);
 
   @override
@@ -56,6 +62,7 @@ class MRTextField extends StatelessWidget {
           readOnly: readOnly!,
           keyboardType: isNumeber ? TextInputType.number : null,
           decoration: InputDecoration(
+            suffixIcon: suffixIcon ?? (suffixIconButton),
             border: OutlineInputBorder(
               gapPadding: 5,
               borderRadius: BorderRadius.circular(5),
