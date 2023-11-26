@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_pavpl/views/auth/login_view.dart';
-import 'package:mobile_pavpl/views/auth/recover_pass_view.dart';
-import 'package:mobile_pavpl/views/auth/register_view.dart';
-import 'package:mobile_pavpl/views/home_view.dart';
-import 'package:mobile_pavpl/views/profile.dart';
-import 'package:mobile_pavpl/views/scheduling/scheduling_profile_view.dart';
-import 'package:mobile_pavpl/views/scheduling/scheduling_view.dart';
+import 'package:mobile_pavpl/views/phone/auth/login_view.dart';
+import 'package:mobile_pavpl/views/phone/auth/recover_pass_view.dart';
+import 'package:mobile_pavpl/views/phone/auth/register_view.dart';
+import 'package:mobile_pavpl/views/phone/home_view.dart';
+import 'package:mobile_pavpl/views/phone/profile.dart';
+import 'package:mobile_pavpl/views/phone/scheduling/scheduling_profile_view.dart';
+import 'package:mobile_pavpl/views/phone/scheduling/scheduling_view.dart';
 import 'package:mobile_pavpl/views/splash_view.dart';
 
 abstract class MRRoutes {
@@ -33,9 +33,9 @@ class MRRoute extends MRRoutes {
       case MRRoutes.perfil:
         return MaterialPageRoute(builder: (_) => const ProfilePage());
       case MRRoutes.scheduling:
-        return MaterialPageRoute(builder: (_) => SchedulingPage());
+        return MaterialPageRoute(builder: (_) => const SchedulingPage());
       case MRRoutes.scheduleProfile:
-        return MaterialPageRoute(builder: (_) => ScheduleProfilePage());
+        return MaterialPageRoute(builder: (_) => const ScheduleProfilePage());
       /*  case MRRoutes.agendarServico:
         return MaterialPageRoute(
           builder: (_) => AgendarServicoView(
