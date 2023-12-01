@@ -23,7 +23,6 @@ class _TabletLoginPageState extends State<TabletLoginPage> {
             height: MediaQuery.of(context).size.height,
             width: MediaQuery.of(context).size.width,
             decoration: const BoxDecoration(
-                //color: Colors.red,
                 image: DecorationImage(
                     fit: BoxFit.cover,
                     image: AssetImage("assets/tema/fundo_1.jpg"))),

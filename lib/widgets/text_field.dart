@@ -41,7 +41,7 @@ class MRTextField extends StatelessWidget {
       this.hint,
       this.suffixIcon,
       this.prefixIcon,
-        this.borderRadius,
+      this.borderRadius,
       this.isPassword = false,
       this.readOnly = false,
       this.isEnabled = true,
@@ -73,7 +73,8 @@ class MRTextField extends StatelessWidget {
             border: OutlineInputBorder(
               gapPadding: 5,
               borderRadius: BorderRadius.circular(borderRadius ?? 5),
-              borderSide: const BorderSide(
+              borderSide: BorderSide(
+                color: Theme.of(context).colorScheme.primary,
                 width: 0.2,
                 style: BorderStyle.none,
               ),

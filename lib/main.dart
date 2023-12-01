@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:logger/logger.dart';
 import 'package:mobile_pavpl/app/routing/route_handler.dart';
 import 'package:mobile_pavpl/app/style/hexadecimal_color.dart';
@@ -32,6 +33,9 @@ class PavplApp extends StatelessWidget {
         initialRoute: MRRoutes.splash,
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
+          textTheme: GoogleFonts.poppinsTextTheme(
+            Theme.of(context).textTheme,
+          ),
           timePickerTheme:
               const TimePickerThemeData(backgroundColor: Colors.white),
           colorScheme: ColorScheme(
