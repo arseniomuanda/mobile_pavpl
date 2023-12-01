@@ -14,6 +14,7 @@ class ReclusoWidget extends StatelessWidget {
       padding: const EdgeInsets.only(top: 20.0),
       child: SizedBox(
         width: size.width * 0.3,
+        height: size.height,
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
@@ -38,6 +39,9 @@ class ReclusoWidget extends StatelessWidget {
                     fontSize: 25,
                     fontWeight: FontWeight.w600,
                     color: Colors.grey.withOpacity(0.6))),
+            SizedBox(
+              height: 300,
+            )
           ],
         ),
       ),

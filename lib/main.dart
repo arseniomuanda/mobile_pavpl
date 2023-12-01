@@ -28,6 +28,7 @@ class PavplApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+        locale: const Locale('pt'),
         title: 'PAVPL',
         onGenerateRoute: MRRoute().onRouteGenerator,
         initialRoute: MRRoutes.splash,

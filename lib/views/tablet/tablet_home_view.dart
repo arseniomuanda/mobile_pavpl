@@ -79,7 +79,7 @@ class _TabletHomePageState extends State<TabletHomePage> {
                           ),
                         ),
                       ),
-                      const Expanded(child: DataGridWidget()),
+                      Expanded(child: DataGridWidget(size: size)),
                     ],
                   ),
                 ),
