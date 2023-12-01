@@ -1,15 +1,16 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:mobile_pavpl/app/core/consts.dart';
 import 'package:mobile_pavpl/widgets/text_field.dart';
 
-class RecoverPassPage extends StatefulWidget {
-  const RecoverPassPage({super.key});
+class TabletRecoverPassPage extends StatefulWidget {
+  const TabletRecoverPassPage({super.key});
 
   @override
-  State<RecoverPassPage> createState() => _RecoverPassPageState();
+  State<TabletRecoverPassPage> createState() => _RecoverPassPageState();
 }
 
-class _RecoverPassPageState extends State<RecoverPassPage> {
+class _RecoverPassPageState extends State<TabletRecoverPassPage> {
   final constactController = TextEditingController();
   @override
   Widget build(BuildContext context) {
@@ -34,36 +35,45 @@ class _RecoverPassPageState extends State<RecoverPassPage> {
             child: Card(
                 child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: Column(
+              child: Row(
                 mainAxisSize: MainAxisSize.min,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Icon(
-                        Icons.lock_open,
-                        size: 25,
-                        color: Theme.of(context).colorScheme.primary,
-                      ),
-                      Text("Recuperação de senha",
-                          style: GoogleFonts.acme(fontSize: 25),
-                          textAlign: TextAlign.center),
-                    ],
+                  SizedBox(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          Icons.lock_open,
+                          size: 25,
+                          color: Theme.of(context).colorScheme.primary,
+                        ),
+                        Text("Recuperação de senha",
+                            style: GoogleFonts.acme(fontSize: 25),
+                            textAlign: TextAlign.center),
+                      ],
+                    ),
                   ),
-                  const SizedBox(
-                    height: 20,
-                  ),
-                  MRTextField(
-                    controller: constactController,
-                    label: "Email ou Telefone",
-                    hint: "exemple@com ou 999999999",
-                  ),
-                  ElevatedButton(
-                      onPressed: () {},
-                      child: Text(
-                        "Enviar",
-                        style: GoogleFonts.acme(fontSize: 20),
-                      ))
+                  const SizedBox(width: 130),
+                  Expanded(
+                    child: Column(
+                      mainAxisSize: MainAxisSize.min,
+                      children: [
+                        MRTextField(
+                          controller: constactController,
+                          label: "Email ou Telefone",
+                          hint: "exemple@com ou 999999999",
+                        ),
+                        ElevatedButton(
+                            onPressed: () {},
+                            child: Text(
+                              "Enviar",
+                              style: GoogleFonts.acme(fontSize: 20),
+                            )),
+                      ],
+                    ),
+                  )
                 ],
               ),
             )),

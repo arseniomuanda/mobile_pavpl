@@ -16,6 +16,11 @@ class _SplashScreenState extends State<SplashScreen> {
       print(MediaQuery.of(context).size.width);
       if (MediaQuery.of(context).size.width > 801) {
         //TODO: #5 criar aqui as telas para app da central de controle
+        if (0 > 1) {
+          Navigator.pushReplacementNamed(context, MRRoutes.tabletHome);
+        } else {
+          Navigator.pushReplacementNamed(context, MRRoutes.tabletLogin);
+        }
       } else {
         if (0 > 1) {
           Navigator.pushReplacementNamed(context, MRRoutes.home);

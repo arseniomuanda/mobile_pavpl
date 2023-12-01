@@ -70,7 +70,7 @@ class _TabletLoginPageState extends State<TabletLoginPage> {
                           children: [
                             TextButton(
                               onPressed: () => Navigator.pushNamed(
-                                  context, MRRoutes.passRecover),
+                                  context, MRRoutes.tabletPassRecover),
                               child: const Text("Esqueceu a Palavra Pass?"),
                             ),
                             Padding(
@@ -78,7 +78,7 @@ class _TabletLoginPageState extends State<TabletLoginPage> {
                               child: ElevatedButton(
                                   onPressed: () =>
                                       Navigator.pushReplacementNamed(
-                                          context, MRRoutes.home),
+                                          context, MRRoutes.tabletHome),
                                   child: Text(
                                     "Logar",
                                     style: GoogleFonts.acme(fontSize: 20),
