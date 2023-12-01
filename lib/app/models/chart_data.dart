@@ -13,3 +13,11 @@ class ChartData1 {
   final String x;
   final double y;
 }
+
+class SalesData {
+  SalesData(this.month, this.sales, {this.annotation});
+
+  final String month;
+  final double? sales;
+  final String? annotation;
+}
