@@ -1,7 +1,10 @@
+import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_pavpl/app/models/chart_data.dart';
 import 'package:mobile_pavpl/app/routing/route_handler.dart';
+import 'package:mobile_pavpl/app/style/hexadecimal_color.dart';
+import 'package:mobile_pavpl/widgets/data_grid_widget.dart';
 import 'package:mobile_pavpl/widgets/text_field.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 import 'package:syncfusion_flutter_charts/sparkcharts.dart';
@@ -37,103 +40,93 @@ class _TabletHomePageState extends State<TabletHomePage> {
   Widget build(BuildContext context) {
     var size = MediaQuery.of(context).size;
     return Scaffold(
+      backgroundColor: Theme.of(context).colorScheme.onBackground,
       body: Padding(
         padding: const EdgeInsets.only(top: 3.0),
         child: SafeArea(
           child: Row(
             children: [
-              Container(
-                  decoration: BoxDecoration(
-                      color: Theme.of(context).colorScheme.background,
-                      borderRadius: const BorderRadius.only(
-                          topRight: Radius.circular(10),
-                          bottomRight: Radius.circular(60))),
-                  height: size.height,
-                  width: size.width * 0.086,
-                  child: Column(children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30, bottom: 8),
-                      child: InkWell(
-                          onTap: () {},
-                          child: Column(
-                            children: [
-                              const Icon(
-                                Icons.dashboard,
-                                color: Colors.white,
-                              ),
-                              Text('Dashboard',
-                                  style: fonte(context, isButton: true))
-                            ],
-                          )),
-                    ),
-                    const Divider(
-                      height: 50,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10, bottom: 8),
-                      child: InkWell(
-                          onTap: () {},
-                          child: Column(
-                            children: [
-                              const Icon(
-                                Icons.person_3,
-                                color: Colors.white,
-                              ),
-                              Text('Gestão de Reclusos',
-                                  textAlign: TextAlign.center,
-                                  style: fonte(context, isButton: true))
-                            ],
-                          )),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30, bottom: 8),
-                      child: InkWell(
-                          onTap: () {},
-                          child: Column(
-                            children: [
-                              const Icon(
-                                Icons.calendar_month,
-                                color: Colors.white,
-                              ),
-                              Text('Gestão de agendamento',
-                                  textAlign: TextAlign.center,
-                                  style: fonte(context, isButton: true))
-                            ],
-                          )),
-                    ),
-                    const Spacer(),
-                    const Divider(
-                      height: 50,
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 10, bottom: 8),
-                      child: InkWell(
-                          onTap: () {},
-                          child: Column(
-                            children: [
-                              const Icon(
-                                Icons.settings,
-                                color: Colors.white,
-                              ),
-                              Text('Configurações',
-                                  textAlign: TextAlign.center,
-                                  style: fonte(context, isButton: true))
-                            ],
-                          )),
-                    ),
-                    Padding(
-                      padding: const EdgeInsets.only(top: 30, bottom: 40),
-                      child: InkWell(
-                          onTap: () => Navigator.pushNamed(
-                              context, MRRoutes.tabletLogin),
-                          child: const Icon(
-                            Icons.power_settings_new,
-                            color: Colors.white,
-                          )),
-                    ),
-                  ])),
               Expanded(
+                flex: 0,
                 child: Container(
+                  decoration: BoxDecoration(
+                    color: Colors.grey[50],
+                  ),
+                  height: size.height,
+                  width: size.width * 0.2,
+                  child: Column(
+                    children: [
+                      const FlutterLogo(
+                        size: 100,
+                      ),
+                      Divider(
+                        color: Theme.of(context).colorScheme.primary,
+                        height: 20,
+                        thickness: 1,
+                        indent: 20,
+                        endIndent: 20,
+                      ),
+                      ListTile(
+                          textColor: Colors.grey,
+                          iconColor: Theme.of(context).colorScheme.primary,
+                          leading: const Icon(
+                            EvaIcons.gridOutline,
+                          ),
+                          title: const Text(
+                            'Dashboard',
+                          )),
+                      ListTile(
+                          textColor: Colors.grey,
+                          iconColor: Theme.of(context).colorScheme.primary,
+                          leading: const Icon(
+                            EvaIcons.personOutline,
+                          ),
+                          title: const Text(
+                            'Reclusos',
+                          )),
+                      ListTile(
+                        textColor: Colors.grey,
+                        iconColor: Theme.of(context).colorScheme.primary,
+                        leading: const Icon(
+                          EvaIcons.calendarOutline,
+                        ),
+                        title: Text(
+                          'Agendamento',
+                          style: TextStyle(
+                              color: Theme.of(context).colorScheme.primary),
+                        ),
+                      ),
+                      const Spacer(),
+                      ListTile(
+                        textColor: Colors.grey,
+                        iconColor: Theme.of(context).colorScheme.primary,
+                        leading: const Icon(
+                          EvaIcons.settingsOutline,
+                        ),
+                        title: const Text(
+                          'Configurações',
+                        ),
+                      ),
+                      ListTile(
+                        textColor: Colors.grey,
+                        onTap: () {
+                          // Navigator.of(context).pushNamedAndRemoveUntil(
+                          //     RouteHandler.login, (route) => false);
+                        },
+                        iconColor: Theme.of(context).colorScheme.primary,
+                        leading: const Icon(
+                          EvaIcons.logOutOutline,
+                        ),
+                        title: const Text(
+                          'Sair',
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Expanded(
+                child: SizedBox(
                   height: size.height,
                   child: Column(
                     children: [
@@ -165,212 +158,7 @@ class _TabletHomePageState extends State<TabletHomePage> {
                           ),
                         ),
                       ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: size.width * 0.3,
-                            child: SfCircularChart(
-                                legend: const Legend(
-                                    position: LegendPosition.bottom,
-                                    isVisible: true),
-                                series: <CircularSeries>[
-                              // Render pie chart
-                              PieSeries<ChartData, String>(
-
-                                  dataLabelSettings: const DataLabelSettings(
-
-                                    isVisible: true,
-                                    // Define como os rótulos de dados são exibidos
-                                    // Aqui, estamos mostrando o nome e o valor
-                                    labelPosition: ChartDataLabelPosition.inside,
-                                    labelAlignment: ChartDataLabelAlignment.top,
-                                  ),
-                                  dataSource: chartData,
-
-                                  pointColorMapper: (ChartData data, _) => data.color,
-                                  xValueMapper: (ChartData data, _) => data.x,
-                                  yValueMapper: (ChartData data, _) => data.y,
-                                  radius: '100%',
-                                  // Segments will explode on tap
-                                  explode: true,
-                                  // First segment will be exploded on initial rendering
-                                  explodeIndex: 1,
-                                  groupMode: CircularChartGroupMode.point,
-                                  // As the grouping mode is point, 2 points will be grouped
-                                  groupTo: 4)
-                            ]),
-                          ),
-                          SizedBox(
-                            width: size.width * 0.3,
-                            child: SfCircularChart(
-                                legend: const Legend(
-                                    position: LegendPosition.bottom,
-                                    isVisible: true),
-                                series: <CircularSeries>[
-                                  // Render pie chart
-                                  PieSeries<ChartData, String>(
-
-                                      dataLabelSettings: const DataLabelSettings(
-
-                                        isVisible: true,
-                                        // Define como os rótulos de dados são exibidos
-                                        // Aqui, estamos mostrando o nome e o valor
-                                        labelPosition: ChartDataLabelPosition.inside,
-                                        labelAlignment: ChartDataLabelAlignment.top,
-                                      ),
-                                      dataSource: chartData,
-
-                                      pointColorMapper: (ChartData data, _) => data.color,
-                                      xValueMapper: (ChartData data, _) => data.x,
-                                      yValueMapper: (ChartData data, _) => data.y,
-                                      radius: '100%',
-                                      // Segments will explode on tap
-                                      explode: true,
-                                      // First segment will be exploded on initial rendering
-                                      explodeIndex: 1,
-                                      groupMode: CircularChartGroupMode.point,
-                                      // As the grouping mode is point, 2 points will be grouped
-                                      groupTo: 4)
-                                ]),
-                          ),
-                          SizedBox(
-                            width: size.width * 0.3,
-                            child: SfCircularChart(
-                                legend: const Legend(
-                                    position: LegendPosition.bottom,
-                                    isVisible: true),
-                                series: <CircularSeries>[
-                                  // Render pie chart
-                                  PieSeries<ChartData, String>(
-
-                                      dataLabelSettings: const DataLabelSettings(
-
-                                        isVisible: true,
-                                        // Define como os rótulos de dados são exibidos
-                                        // Aqui, estamos mostrando o nome e o valor
-                                        labelPosition: ChartDataLabelPosition.inside,
-                                        labelAlignment: ChartDataLabelAlignment.top,
-                                      ),
-                                      dataSource: chartData,
-
-                                      pointColorMapper: (ChartData data, _) => data.color,
-                                      xValueMapper: (ChartData data, _) => data.x,
-                                      yValueMapper: (ChartData data, _) => data.y,
-                                      radius: '100%',
-                                      // Segments will explode on tap
-                                      explode: true,
-                                      // First segment will be exploded on initial rendering
-                                      explodeIndex: 1,
-                                      groupMode: CircularChartGroupMode.point,
-                                      // As the grouping mode is point, 2 points will be grouped
-                                      groupTo: 4)
-                                ]),
-                          ),
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          SizedBox(
-                            width: size.width * 0.3,
-                            child: SfCircularChart(
-                                legend: const Legend(
-                                    position: LegendPosition.bottom,
-                                    isVisible: true),
-                                series: <CircularSeries>[
-                                  // Render pie chart
-                                  PieSeries<ChartData, String>(
-
-                                      dataLabelSettings: const DataLabelSettings(
-
-                                        isVisible: true,
-                                        // Define como os rótulos de dados são exibidos
-                                        // Aqui, estamos mostrando o nome e o valor
-                                        labelPosition: ChartDataLabelPosition.inside,
-                                        labelAlignment: ChartDataLabelAlignment.top,
-                                      ),
-                                      dataSource: chartData,
-
-                                      pointColorMapper: (ChartData data, _) => data.color,
-                                      xValueMapper: (ChartData data, _) => data.x,
-                                      yValueMapper: (ChartData data, _) => data.y,
-                                      radius: '100%',
-                                      // Segments will explode on tap
-                                      explode: true,
-                                      // First segment will be exploded on initial rendering
-                                      explodeIndex: 1,
-                                      groupMode: CircularChartGroupMode.point,
-                                      // As the grouping mode is point, 2 points will be grouped
-                                      groupTo: 4)
-                                ]),
-                          ),
-                          SizedBox(
-                            width: size.width * 0.3,
-                            child: SfCircularChart(
-                                legend: const Legend(
-                                    position: LegendPosition.bottom,
-                                    isVisible: true),
-                                series: <CircularSeries>[
-                                  // Render pie chart
-                                  PieSeries<ChartData, String>(
-
-                                      dataLabelSettings: const DataLabelSettings(
-
-                                        isVisible: true,
-                                        // Define como os rótulos de dados são exibidos
-                                        // Aqui, estamos mostrando o nome e o valor
-                                        labelPosition: ChartDataLabelPosition.inside,
-                                        labelAlignment: ChartDataLabelAlignment.top,
-                                      ),
-                                      dataSource: chartData,
-
-                                      pointColorMapper: (ChartData data, _) => data.color,
-                                      xValueMapper: (ChartData data, _) => data.x,
-                                      yValueMapper: (ChartData data, _) => data.y,
-                                      radius: '100%',
-                                      // Segments will explode on tap
-                                      explode: true,
-                                      // First segment will be exploded on initial rendering
-                                      explodeIndex: 1,
-                                      groupMode: CircularChartGroupMode.point,
-                                      // As the grouping mode is point, 2 points will be grouped
-                                      groupTo: 4)
-                                ]),
-                          ),
-                          SizedBox(
-                            width: size.width * 0.3,
-                            child: SfCircularChart(
-                                legend: const Legend(
-                                    position: LegendPosition.bottom,
-                                    isVisible: true),
-                                series: <CircularSeries>[
-                                  // Render pie chart
-                                  PieSeries<ChartData, String>(
-
-                                      dataLabelSettings: const DataLabelSettings(
-
-                                        isVisible: true,
-                                        // Define como os rótulos de dados são exibidos
-                                        // Aqui, estamos mostrando o nome e o valor
-                                        labelPosition: ChartDataLabelPosition.inside,
-                                        labelAlignment: ChartDataLabelAlignment.top,
-                                      ),
-                                      dataSource: chartData,
-
-                                      pointColorMapper: (ChartData data, _) => data.color,
-                                      xValueMapper: (ChartData data, _) => data.x,
-                                      yValueMapper: (ChartData data, _) => data.y,
-                                      radius: '100%',
-                                      // Segments will explode on tap
-                                      explode: true,
-                                      // First segment will be exploded on initial rendering
-                                      explodeIndex: 1,
-                                      groupMode: CircularChartGroupMode.point,
-                                      // As the grouping mode is point, 2 points will be grouped
-                                      groupTo: 4)
-                                ]),
-                          ),
-                        ],
-                      )
+                      Expanded(child: DataGridWidget()),
                     ],
                   ),
                 ),
