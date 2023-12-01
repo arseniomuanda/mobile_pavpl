@@ -3,8 +3,8 @@ import 'package:flutter/material.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
 class DataGridWidget extends StatefulWidget {
-  const DataGridWidget({Key? key}) : super(key: key);
-
+  const DataGridWidget({Key? key, required this.size}) : super(key: key);
+  final Size size;
   @override
   _DataGridWidgetState createState() => _DataGridWidgetState();
 }
@@ -12,18 +12,17 @@ class DataGridWidget extends StatefulWidget {
 class _DataGridWidgetState extends State<DataGridWidget> {
   final _reclusos = <Recluso>[];
   final _faker = Faker();
-  late final ReclusosDataSource _employeeDataSource;
 
+  late final ReclusosDataSource _employeeDataSource;
+  final int rowsPerPage = 10;
   Future populateData() async {
     for (int i = 0; i < 100; i++) {
       _reclusos.add(
         Recluso(
           id: i + 1,
           name: _faker.person.name(),
-          designation: _faker.job.title(),
-          salary: _faker.randomGenerator
-              .decimal(min: 1000, scale: 2)
-              .roundToDouble(),
+          entrada: DateTime.timestamp(),
+          saida: DateTime.timestamp()
         ),
       );
     }
@@ -38,38 +37,64 @@ class _DataGridWidgetState extends State<DataGridWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
+    return LayoutBuilder(
+      builder: (context, constraints) => Column(
+    crossAxisAlignment: CrossAxisAlignment.center,
+    children: [
+      SizedBox(
+        height: constraints.maxHeight - 60,
+        width: constraints.maxWidth,
         child: SfDataGrid(
+            allowSorting: true,
+            allowTriStateSorting: true,
+            showSortNumbers: true,
             columnWidthMode: ColumnWidthMode.fill,
             rowsPerPage: 20,
             source: _employeeDataSource,
             columns: [
-          GridColumn(
-              columnName: 'id',
-              label: const Center(
-                child: Text(
-                  'ID',
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-              )),
-          GridColumn(
-              columnName: 'name',
-              label: const Center(
-                  child: Text('Name',
-                      style: TextStyle(fontWeight: FontWeight.bold)))),
-          GridColumn(
-              columnName: 'designation',
-              label: const Center(
-                child: Text('Designation',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-              )),
-          GridColumn(
-              columnName: 'salary',
-              label: const Center(
-                child: Text('Salary',
-                    style: TextStyle(fontWeight: FontWeight.bold)),
-              )),
-        ]));
+              GridColumn(
+                  columnName: 'id',
+                  label: const Center(
+                    child: Text(
+                      'ID',
+                      overflow: TextOverflow.ellipsis,
+                      style: TextStyle(fontWeight: FontWeight.bold),
+                    ),
+                  )),
+              GridColumn(
+                  columnName: 'name',
+                  label: const Center(
+                      child: Text('Name',
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontWeight: FontWeight.bold)))),
+              GridColumn(
+                  columnName: 'entrada',
+                  label: const Center(
+                    child: Text('Data Entrada',
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                  )),
+              GridColumn(
+                  columnName: 'saida',
+                  label: const Center(
+                    child: Text('Data Saida',
+                        overflow: TextOverflow.ellipsis,
+                        style: TextStyle(fontWeight: FontWeight.bold)),
+                  )),
+            ]),
+      ),
+      SizedBox(
+          height: 60,
+          width: constraints.maxWidth,
+          child: SfDataPager(
+            delegate: _employeeDataSource,
+            pageCount: _reclusos.length / rowsPerPage,
+            visibleItemsCount: 3,
+            direction: Axis.horizontal,
+          ))
+    ],
+      ),
+    );
   }
 }
 
@@ -79,9 +104,9 @@ class ReclusosDataSource extends DataGridSource {
         .map<DataGridRow>((e) => DataGridRow(cells: [
               DataGridCell<int>(columnName: 'id', value: e.id),
               DataGridCell<String>(columnName: 'name', value: e.name),
-              DataGridCell<String>(
-                  columnName: 'designation', value: e.designation),
-              DataGridCell<double>(columnName: 'salary', value: e.salary),
+              DataGridCell<DateTime>(
+                  columnName: 'entrada', value:  e.entrada),
+              DataGridCell<DateTime>(columnName: 'saida', value: e.saida),
             ]))
         .toList();
   }
@@ -116,8 +141,8 @@ class ReclusosDataSource extends DataGridSource {
 class Recluso {
   int? id;
   String? name;
-  String? designation;
-  double? salary;
+  DateTime entrada;
+  DateTime saida;
 
-  Recluso({this.id, this.name, this.designation, this.salary});
+  Recluso({this.id, this.name, required this.entrada, required this.saida});
 }

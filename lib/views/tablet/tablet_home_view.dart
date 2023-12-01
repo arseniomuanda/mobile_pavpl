@@ -2,12 +2,11 @@ import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_pavpl/app/models/chart_data.dart';
-import 'package:mobile_pavpl/app/routing/route_handler.dart';
-import 'package:mobile_pavpl/app/style/hexadecimal_color.dart';
+import 'package:mobile_pavpl/widgets/assider_widget.dart';
 import 'package:mobile_pavpl/widgets/data_grid_widget.dart';
+import 'package:mobile_pavpl/widgets/recloso_perfil_widget.dart';
 import 'package:mobile_pavpl/widgets/text_field.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
-import 'package:syncfusion_flutter_charts/sparkcharts.dart';
 
 class TabletHomePage extends StatefulWidget {
   TabletHomePage({super.key});
@@ -46,85 +45,7 @@ class _TabletHomePageState extends State<TabletHomePage> {
         child: SafeArea(
           child: Row(
             children: [
-              Expanded(
-                flex: 0,
-                child: Container(
-                  decoration: BoxDecoration(
-                    color: Colors.grey[50],
-                  ),
-                  height: size.height,
-                  width: size.width * 0.2,
-                  child: Column(
-                    children: [
-                      const FlutterLogo(
-                        size: 100,
-                      ),
-                      Divider(
-                        color: Theme.of(context).colorScheme.primary,
-                        height: 20,
-                        thickness: 1,
-                        indent: 20,
-                        endIndent: 20,
-                      ),
-                      ListTile(
-                          textColor: Colors.grey,
-                          iconColor: Theme.of(context).colorScheme.primary,
-                          leading: const Icon(
-                            EvaIcons.gridOutline,
-                          ),
-                          title: const Text(
-                            'Dashboard',
-                          )),
-                      ListTile(
-                          textColor: Colors.grey,
-                          iconColor: Theme.of(context).colorScheme.primary,
-                          leading: const Icon(
-                            EvaIcons.personOutline,
-                          ),
-                          title: const Text(
-                            'Reclusos',
-                          )),
-                      ListTile(
-                        textColor: Colors.grey,
-                        iconColor: Theme.of(context).colorScheme.primary,
-                        leading: const Icon(
-                          EvaIcons.calendarOutline,
-                        ),
-                        title: Text(
-                          'Agendamento',
-                          style: TextStyle(
-                              color: Theme.of(context).colorScheme.primary),
-                        ),
-                      ),
-                      const Spacer(),
-                      ListTile(
-                        textColor: Colors.grey,
-                        iconColor: Theme.of(context).colorScheme.primary,
-                        leading: const Icon(
-                          EvaIcons.settingsOutline,
-                        ),
-                        title: const Text(
-                          'Configurações',
-                        ),
-                      ),
-                      ListTile(
-                        textColor: Colors.grey,
-                        onTap: () {
-                          // Navigator.of(context).pushNamedAndRemoveUntil(
-                          //     RouteHandler.login, (route) => false);
-                        },
-                        iconColor: Theme.of(context).colorScheme.primary,
-                        leading: const Icon(
-                          EvaIcons.logOutOutline,
-                        ),
-                        title: const Text(
-                          'Sair',
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              AsiderWidget(size: size),
               Expanded(
                 child: SizedBox(
                   height: size.height,
@@ -158,11 +79,12 @@ class _TabletHomePageState extends State<TabletHomePage> {
                           ),
                         ),
                       ),
-                      Expanded(child: DataGridWidget()),
+                      Expanded(child: DataGridWidget(size: size)),
                     ],
                   ),
                 ),
               ),
+              ReclusoWidget(size: size)
             ],
           ),
         ),
