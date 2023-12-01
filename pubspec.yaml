@@ -38,7 +38,7 @@ dependencies:
   routing_client_dart: ^0.3.1
   logger: ^1.1.0
   google_fonts: ^6.1.0
-  syncfusion_flutter_datepicker: ^23.1.44
+  syncfusion_flutter_charts: ^22.2.10
   intl: ^0.18.1
   dio: ^5.3.3
 
