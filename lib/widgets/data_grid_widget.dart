@@ -16,7 +16,7 @@ class _DataGridWidgetState extends State<DataGridWidget> {
   final _faker = Faker();
 
   late final ReclusosDataSource _employeeDataSource;
-  final int rowsPerPage = 10;
+  final int rowsPerPage = 30;
   Future populateData() async {
     for (int i = 0; i < 100; i++) {
       _reclusos.add(
@@ -52,14 +52,16 @@ class _DataGridWidgetState extends State<DataGridWidget> {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           SizedBox(
-            height: constraints.maxHeight - 60,
             width: constraints.maxWidth,
+            height: constraints.minHeight - 60,
             child: SfDataGrid(
-                allowSorting: false,
-                allowTriStateSorting: false,
-                showSortNumbers: false,
+                gridLinesVisibility: GridLinesVisibility.both,
+                headerGridLinesVisibility: GridLinesVisibility.both,
+                allowSorting: true,
+                allowTriStateSorting: true,
+                showSortNumbers: true,
                 columnWidthMode: ColumnWidthMode.fill,
-                rowsPerPage: 20,
+                rowsPerPage: rowsPerPage,
                 source: _employeeDataSource,
                 columns: [
                   GridColumn(
@@ -67,6 +69,15 @@ class _DataGridWidgetState extends State<DataGridWidget> {
                       label: const Center(
                         child: Text(
                           'ID',
+                          overflow: TextOverflow.ellipsis,
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                      )),
+                  GridColumn(
+                      columnName: 'name',
+                      label: const Center(
+                        child: Text(
+                          'Name',
                           overflow: TextOverflow.ellipsis,
                           style: TextStyle(fontWeight: FontWeight.bold),
                         ),
