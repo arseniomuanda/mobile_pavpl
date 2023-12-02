@@ -2,9 +2,8 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:mobile_pavpl/app/core/consts.dart';
-import 'package:mobile_pavpl/app/helpers/dummy_data.dart';
-import 'package:mobile_pavpl/providers/recluso_provider.dart';
+import 'package:mobile_pavpl/app/data/dummy_data.dart';
+import 'package:mobile_pavpl/providers/global_provider.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
@@ -18,12 +17,12 @@ class DataGridWidget extends ConsumerStatefulWidget {
 class _DataGridWidgetState extends ConsumerState<DataGridWidget> {
   final _faker = Faker();
 
-  late final ReclusosDataSource _employeeDataSource;
+  late final VisitaDataSource _listDataSource;
   final int rowsPerPage = 10;
 
   @override
   void initState() {
-    _employeeDataSource = ReclusosDataSource(reclusos: visitas);
+    _listDataSource = VisitaDataSource(reclusos: visitas);
     super.initState();
   }
 
@@ -40,33 +39,41 @@ class _DataGridWidgetState extends ConsumerState<DataGridWidget> {
                 gridLinesVisibility: GridLinesVisibility.none,
                 headerGridLinesVisibility: GridLinesVisibility.none,
                 headerRowHeight: 40,
-                allowSorting: false,
-                allowTriStateSorting: false,
-                showSortNumbers: false,
+                allowSorting: true,
+                allowTriStateSorting: true,
+                showSortNumbers: true,
                 selectionMode: SelectionMode.single,
                 onSelectionChanged: (addedRows, removedRows) {
-                  if (ref.read(reclusoProvider).name !=
+                  print(addedRows.first.getCells()[1].value);
+                  if (ref.read(visitaProvider).id !=
                       addedRows.first.getCells()[1].value) {
                     setState(() {
-                      ref.read(reclusoProvider.notifier).update((state) =>
-                          presos
-                              .where((element) =>
-                                  element.name ==
-                                  addedRows.first.getCells()[1].value)
-                              .first);
+                      ref.read(visitaProvider.notifier).update((state) =>
+                      addedRows.first.getCells()[1].value);
                     });
                   }
                 },
                 columnWidthMode: ColumnWidthMode.fill,
                 rowsPerPage: rowsPerPage,
-                source: _employeeDataSource,
+                source: _listDataSource,
                 columns: [
+                  GridColumn(
+                    width: 50,
+                    columnName: 'number',
+                    label: Text(
+                      '#',
+                      overflow: TextOverflow.ellipsis,
+                      textAlign: TextAlign.center,
+                      style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                          fontWeight: FontWeight.bold, color: Colors.black),
+                    ),
+                  ),
                   GridColumn(
                     columnName: 'nome',
                     label: Text(
                       'Nome do Visitante',
                       overflow: TextOverflow.ellipsis,
-                      textAlign: TextAlign.left,
+                      textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           fontWeight: FontWeight.bold, color: Colors.black),
                     ),
@@ -108,7 +115,7 @@ class _DataGridWidgetState extends ConsumerState<DataGridWidget> {
                 height: 60,
                 width: constraints.maxWidth,
                 child: Padding(
-                  padding: EdgeInsets.symmetric(horizontal: 32.0),
+                  padding: const EdgeInsets.symmetric(horizontal: 52.0),
                   child: SfDataPagerTheme(
                     data: SfDataPagerThemeData(
                       backgroundColor: Colors.white,
@@ -125,9 +132,9 @@ class _DataGridWidgetState extends ConsumerState<DataGridWidget> {
                       itemColor: Colors.grey[200],
                     ),
                     child: SfDataPager(
-                      delegate: _employeeDataSource,
-                      pageCount: visitas.length / rowsPerPage,
-                      visibleItemsCount: 10,
+                      delegate: _listDataSource,
+                      pageCount: (visitas.length / rowsPerPage).ceilToDouble(),
+                      visibleItemsCount: 6,
                       direction: Axis.horizontal,
                     ),
                   ),
@@ -139,11 +146,21 @@ class _DataGridWidgetState extends ConsumerState<DataGridWidget> {
   }
 }
 
-class ReclusosDataSource extends DataGridSource {
-  ReclusosDataSource({List<Visita>? reclusos}) {
+String formatHour(TimeOfDay timeOfDay) {
+  final now = DateTime.now();
+  final dt =
+      DateTime(now.year, now.month, now.day, timeOfDay.hour, timeOfDay.minute);
+  final format = DateFormat.jm(); //"6:00 AM"
+  return format.format(dt);
+}
+
+class VisitaDataSource extends DataGridSource {
+  VisitaDataSource({List<Visita>? reclusos}) {
     _reclusos = reclusos!
         .map<DataGridRow>((e) => DataGridRow(cells: [
-              DataGridCell<String>(columnName: 'nome', value: e.nameOfVisitor!),
+              DataGridCell<int>(
+                  columnName: 'number', value: reclusos.indexOf(e) + 1),
+              DataGridCell<Visita>(columnName: 'nome', value: e),
               DataGridCell<String>(
                   columnName: 'nome_prisioneiro',
                   value: presos
@@ -174,6 +191,17 @@ class ReclusosDataSource extends DataGridSource {
     return DataGridRowAdapter(
       color: getRowBackgroundColor(),
       cells: row.getCells().map<Widget>((e) {
+        if (e.columnName == 'nome') {
+          var visita = e.value as Visita;
+          return Row(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: [
+              CircleAvatar(backgroundImage: NetworkImage(visita.photo!)),
+              const SizedBox(width: 10,),
+              Text(visita.nameOfVisitor!)
+            ],
+          );
+        }
         return Container(
           padding: const EdgeInsets.all(8.0),
           child: Text(e.value.toString()),
@@ -184,12 +212,4 @@ class ReclusosDataSource extends DataGridSource {
 
   @override
   List<DataGridRow> get rows => _reclusos;
-}
-
-String formatHour(TimeOfDay timeOfDay) {
-  final now = DateTime.now();
-  final dt =
-      DateTime(now.year, now.month, now.day, timeOfDay.hour, timeOfDay.minute);
-  final format = DateFormat.jm(); //"6:00 AM"
-  return format.format(dt);
 }

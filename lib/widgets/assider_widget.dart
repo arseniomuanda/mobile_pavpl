@@ -21,13 +21,16 @@ class AsiderWidget extends StatelessWidget {
         width: size.width * 0.2,
         child: Column(
           children: [
+            SizedBox(
+              height: size.height * 0.06,
+            ),
             const FlutterLogo(
               size: 100,
             ),
             Divider(
               color: Theme.of(context).colorScheme.primary,
-              height: 20,
-              thickness: 1,
+              height: 15,
+              thickness: 0.3,
               indent: 20,
               endIndent: 20,
             ),
@@ -53,11 +56,22 @@ class AsiderWidget extends StatelessWidget {
               textColor: Colors.grey,
               iconColor: Theme.of(context).colorScheme.primary,
               leading: const Icon(
+                EvaIcons.list,
+              ),
+              title: Text(
+                'Visitas',
+                style: TextStyle(
+                    color: Theme.of(context).colorScheme.primary),
+              ),
+            ),
+            ListTile(
+              textColor: Colors.grey,
+              iconColor: Theme.of(context).colorScheme.primary,
+              leading: const Icon(
                 EvaIcons.calendarOutline,
               ),
               title: Text(
                 'Agendamento',
-                style: TextStyle(color: Theme.of(context).colorScheme.primary),
               ),
             ),
             const Spacer(),
