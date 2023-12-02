@@ -44,6 +44,9 @@ dependencies:
   eva_icons_flutter: ^3.1.0
   syncfusion_flutter_datagrid: ^22.2.12
   faker: ^2.1.0
+  riverpod: ^2.4.9
+  flutter_riverpod: ^2.4.9
+  syncfusion_flutter_core: ^22.2.12
 
 dev_dependencies:
   flutter_test:
