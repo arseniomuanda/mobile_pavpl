@@ -1,8 +1,8 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobile_pavpl/app/helpers/dummy_data.dart';
-import 'package:mobile_pavpl/providers/recluso_provider.dart';
+import 'package:mobile_pavpl/app/data/dummy_data.dart';
+import 'package:mobile_pavpl/providers/global_provider.dart';
 
 class ReclusoWidget extends ConsumerWidget {
   ReclusoWidget({
@@ -29,13 +29,13 @@ class ReclusoWidget extends ConsumerWidget {
             children: [
               Align(
                 alignment: Alignment.topLeft,
-                child: IconButton(
-                  onPressed: () {
+                child: InkWell(
+                  onTap: () {
                     ref
-                        .read(reclusoProvider.notifier)
+                        .read(prisonerProvider.notifier)
                         .update((state) => Prisoner());
                   },
-                  icon: Icon(
+                  child: Icon(
                     EvaIcons.close,
                     color: Theme.of(context).colorScheme.primary,
                   ),
