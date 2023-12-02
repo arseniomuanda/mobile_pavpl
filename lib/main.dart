@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:logger/logger.dart';
 import 'package:mobile_pavpl/app/routing/route_handler.dart';
@@ -18,7 +19,7 @@ final logger = Logger(
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
-    const PavplApp(),
+    const ProviderScope(child: PavplApp()),
   );
 }
 
@@ -28,30 +29,29 @@ class PavplApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        locale: const Locale('pt'),
-        title: 'PAVPL',
-        onGenerateRoute: MRRoute().onRouteGenerator,
-        initialRoute: MRRoutes.splash,
-        debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          textTheme: GoogleFonts.poppinsTextTheme(
-            Theme.of(context).textTheme,
-          ),
-          timePickerTheme:
-              const TimePickerThemeData(backgroundColor: Colors.white),
-          colorScheme: ColorScheme(
-            background: MRColor.fromHex('#FA8000'),
-            brightness: Brightness.light,
-            error: MRColor.fromHex('#FA8000'),
-            onBackground: MRColor.fromHex('#FFFFFF'),
-            onError: MRColor.fromHex('#FFFFFF'),
-            onPrimary: MRColor.fromHex('#FFFFFF'),
-            onSecondary: MRColor.fromHex('#000000'),
-            onSurface: MRColor.fromHex('#000000'),
-            primary: MRColor.fromHex('#FA8000'),
-            secondary: MRColor.fromHex('#000000'),
-            surface: MRColor.fromHex('#000000'),
-          ),
-        ));
+      locale: const Locale('pt'),
+      title: 'PAVPL',
+      onGenerateRoute: MRRoute().onRouteGenerator,
+      initialRoute: MRRoutes.splash,
+      debugShowCheckedModeBanner: false,
+      theme: ThemeData(
+        textTheme: GoogleFonts.latoTextTheme(),
+        timePickerTheme:
+            const TimePickerThemeData(backgroundColor: Colors.white),
+        colorScheme: ColorScheme(
+          background: MRColor.fromHex('#FA8000'),
+          brightness: Brightness.light,
+          error: MRColor.fromHex('#FA8000'),
+          onBackground: MRColor.fromHex('#FFFFFF'),
+          onError: MRColor.fromHex('#FFFFFF'),
+          onPrimary: MRColor.fromHex('#FFFFFF'),
+          onSecondary: MRColor.fromHex('#000000'),
+          onSurface: MRColor.fromHex('#000000'),
+          primary: MRColor.fromHex('#FA8000'),
+          secondary: MRColor.fromHex('#000000'),
+          surface: MRColor.fromHex('#000000'),
+        ),
+      ),
+    );
   }
 }
