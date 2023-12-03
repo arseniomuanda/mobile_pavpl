@@ -51,6 +51,7 @@ class AsiderWidget extends ConsumerWidget {
                       : null,
                 )),
             ListTile(
+                onTap: () => _homeState.changeBottomIndex(1),
                 textColor: Colors.grey,
                 iconColor: Theme.of(context).colorScheme.primary,
                 leading: const Icon(
@@ -63,24 +64,26 @@ class AsiderWidget extends ConsumerWidget {
                       : null,
                 )),
             ListTile(
+              onTap: () => _homeState.changeBottomIndex(2),
               textColor: Colors.grey,
               iconColor: Theme.of(context).colorScheme.primary,
               leading: const Icon(
                 EvaIcons.list,
               ),
               title: Text('Visitas',
-                  style: _homeState.bottomIndex == 1
+                  style: _homeState.bottomIndex == 2
                       ? TextStyle(color: Theme.of(context).colorScheme.primary)
                       : null),
             ),
             ListTile(
+              onTap: ()=> _homeState.changeBottomIndex(3),
               textColor: Colors.grey,
               iconColor: Theme.of(context).colorScheme.primary,
               leading: const Icon(
                 EvaIcons.calendarOutline,
               ),
               title: Text('Agendamento',
-                  style: _homeState.bottomIndex == 1
+                  style: _homeState.bottomIndex == 3
                       ? TextStyle(color: Theme.of(context).colorScheme.primary)
                       : null),
             ),
@@ -92,7 +95,7 @@ class AsiderWidget extends ConsumerWidget {
                 EvaIcons.settingsOutline,
               ),
               title: Text('Configurações',
-                  style: _homeState.bottomIndex == 1
+                  style: _homeState.bottomIndex == 5
                       ? TextStyle(color: Theme.of(context).colorScheme.primary)
                       : null),
             ),

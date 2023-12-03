@@ -2,6 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_pavpl/providers/global_provider.dart';
+import 'package:mobile_pavpl/widgets/agendamento_view.dart';
+import 'package:mobile_pavpl/widgets/dashboard_view.dart';
+import 'package:mobile_pavpl/widgets/reclusos_page.dart';
 import 'package:mobile_pavpl/widgets/visitas_page.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
@@ -35,12 +38,10 @@ class _TabletHomePageState extends ConsumerState<TabletHomePage> {
         controller: _homeState.homePageController,
         onPageChanged: _homeState.changeBottomIndex,
         children: [
+          DashbordPage(size: size),
+          ReclusoPage(size: size),
           VisitasPage(size: size),
-          Container(
-            color: Colors.red,
-            width: 400,
-            height: 300,
-          )
+          AgendamentoPage(size: size)
         ],
       ),
     );

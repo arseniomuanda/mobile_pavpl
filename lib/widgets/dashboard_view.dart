@@ -8,12 +8,11 @@ import 'package:mobile_pavpl/widgets/text_field.dart';
 import 'package:mobile_pavpl/widgets/visitante_perfil_widget.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
-
-class BashbordPage extends ConsumerWidget {
+class DashbordPage extends ConsumerWidget {
   final Size size;
   final codController = TextEditingController();
 
-  BashbordPage({
+  DashbordPage({
     super.key,
     required this.size,
   });
@@ -31,7 +30,9 @@ class BashbordPage extends ConsumerWidget {
       padding: const EdgeInsets.only(top: 3.0),
       child: Row(
         children: [
-          AsiderWidget(size: size,),
+          AsiderWidget(
+            size: size,
+          ),
           Expanded(
             child: Container(
               height: size.height,
@@ -54,7 +55,7 @@ class BashbordPage extends ConsumerWidget {
                   Row(
                     children: [
                       SizedBox(
-                        width: size.width * 0.3,
+                        width: size.width * 0.4,
                         child: SfCircularChart(
                             legend: const Legend(
                                 position: LegendPosition.bottom,
@@ -62,18 +63,17 @@ class BashbordPage extends ConsumerWidget {
                             series: <CircularSeries>[
                               // Render pie chart
                               PieSeries<ChartData, String>(
-
                                   dataLabelSettings: const DataLabelSettings(
-
                                     isVisible: true,
                                     // Define como os rótulos de dados são exibidos
                                     // Aqui, estamos mostrando o nome e o valor
-                                    labelPosition: ChartDataLabelPosition.inside,
+                                    labelPosition:
+                                        ChartDataLabelPosition.inside,
                                     labelAlignment: ChartDataLabelAlignment.top,
                                   ),
                                   dataSource: chartData,
-
-                                  pointColorMapper: (ChartData data, _) => data.color,
+                                  pointColorMapper: (ChartData data, _) =>
+                                      data.color,
                                   xValueMapper: (ChartData data, _) => data.x,
                                   yValueMapper: (ChartData data, _) => data.y,
                                   radius: '100%',
@@ -86,12 +86,12 @@ class BashbordPage extends ConsumerWidget {
                                   groupTo: 4)
                             ]),
                       ),
+                      const Spacer(),
                       SizedBox(
-                        width: size.width * 0.3,
-                        child:SfCartesianChart(
+                        width: size.width * 0.4,
+                        child: SfCartesianChart(
                           legend: const Legend(
-                              position: LegendPosition.bottom,
-                              isVisible: true),
+                              position: LegendPosition.bottom, isVisible: true),
                           primaryXAxis: CategoryAxis(),
                           series: <ChartSeries>[
                             SplineAreaSeries<SalesData, String>(
@@ -102,9 +102,9 @@ class BashbordPage extends ConsumerWidget {
                                 SalesData('Apr', 60),
                                 SalesData('May', 80),
                                 SalesData('Jun', 70),
-                                SalesData('Jul', 55, ),
-                                SalesData('Aug', 70,),
-                                SalesData('Sep', 43,),
+                                SalesData('Jul', 55),
+                                SalesData('Aug', 70),
+                                SalesData('Sep', 43),
                                 SalesData('Oct', 65),
                                 SalesData('Nov', 45),
                                 SalesData('Dec', 75),
@@ -114,46 +114,13 @@ class BashbordPage extends ConsumerWidget {
                             ),
                           ],
                         ),
-                      ),
-                      SizedBox(
-                        width: size.width * 0.3,
-                        child: SfCircularChart(
-                            legend: const Legend(
-                                position: LegendPosition.bottom,
-                                isVisible: true),
-                            series: <CircularSeries>[
-                              // Render pie chart
-                              PieSeries<ChartData, String>(
-
-                                  dataLabelSettings: const DataLabelSettings(
-
-                                    isVisible: true,
-                                    // Define como os rótulos de dados são exibidos
-                                    // Aqui, estamos mostrando o nome e o valor
-                                    labelPosition: ChartDataLabelPosition.inside,
-                                    labelAlignment: ChartDataLabelAlignment.top,
-                                  ),
-                                  dataSource: chartData,
-
-                                  pointColorMapper: (ChartData data, _) => data.color,
-                                  xValueMapper: (ChartData data, _) => data.x,
-                                  yValueMapper: (ChartData data, _) => data.y,
-                                  radius: '100%',
-                                  // Segments will explode on tap
-                                  explode: true,
-                                  // First segment will be exploded on initial rendering
-                                  explodeIndex: 1,
-                                  groupMode: CircularChartGroupMode.point,
-                                  // As the grouping mode is point, 2 points will be grouped
-                                  groupTo: 4)
-                            ]),
-                      ),
+                      )
                     ],
                   ),
                   Row(
                     children: [
                       SizedBox(
-                        width: size.width * 0.3,
+                        width: size.width * 0.4,
                         child: SfCircularChart(
                             legend: const Legend(
                                 position: LegendPosition.bottom,
@@ -161,18 +128,17 @@ class BashbordPage extends ConsumerWidget {
                             series: <CircularSeries>[
                               // Render pie chart
                               PieSeries<ChartData, String>(
-
                                   dataLabelSettings: const DataLabelSettings(
-
                                     isVisible: true,
                                     // Define como os rótulos de dados são exibidos
                                     // Aqui, estamos mostrando o nome e o valor
-                                    labelPosition: ChartDataLabelPosition.inside,
+                                    labelPosition:
+                                        ChartDataLabelPosition.inside,
                                     labelAlignment: ChartDataLabelAlignment.top,
                                   ),
                                   dataSource: chartData,
-
-                                  pointColorMapper: (ChartData data, _) => data.color,
+                                  pointColorMapper: (ChartData data, _) =>
+                                      data.color,
                                   xValueMapper: (ChartData data, _) => data.x,
                                   yValueMapper: (ChartData data, _) => data.y,
                                   radius: '100%',
@@ -185,8 +151,9 @@ class BashbordPage extends ConsumerWidget {
                                   groupTo: 4)
                             ]),
                       ),
+                      const Spacer(),
                       SizedBox(
-                        width: size.width * 0.3,
+                        width: size.width * 0.4,
                         child: SfCircularChart(
                             legend: const Legend(
                                 position: LegendPosition.bottom,
@@ -194,51 +161,17 @@ class BashbordPage extends ConsumerWidget {
                             series: <CircularSeries>[
                               // Render pie chart
                               PieSeries<ChartData, String>(
-
                                   dataLabelSettings: const DataLabelSettings(
-
                                     isVisible: true,
                                     // Define como os rótulos de dados são exibidos
                                     // Aqui, estamos mostrando o nome e o valor
-                                    labelPosition: ChartDataLabelPosition.inside,
+                                    labelPosition:
+                                        ChartDataLabelPosition.inside,
                                     labelAlignment: ChartDataLabelAlignment.top,
                                   ),
                                   dataSource: chartData,
-
-                                  pointColorMapper: (ChartData data, _) => data.color,
-                                  xValueMapper: (ChartData data, _) => data.x,
-                                  yValueMapper: (ChartData data, _) => data.y,
-                                  radius: '100%',
-                                  // Segments will explode on tap
-                                  explode: true,
-                                  // First segment will be exploded on initial rendering
-                                  explodeIndex: 1,
-                                  groupMode: CircularChartGroupMode.point,
-                                  // As the grouping mode is point, 2 points will be grouped
-                                  groupTo: 4)
-                            ]),
-                      ),
-                      SizedBox(
-                        width: size.width * 0.3,
-                        child: SfCircularChart(
-                            legend: const Legend(
-                                position: LegendPosition.bottom,
-                                isVisible: true),
-                            series: <CircularSeries>[
-                              // Render pie chart
-                              PieSeries<ChartData, String>(
-
-                                  dataLabelSettings: const DataLabelSettings(
-
-                                    isVisible: true,
-                                    // Define como os rótulos de dados são exibidos
-                                    // Aqui, estamos mostrando o nome e o valor
-                                    labelPosition: ChartDataLabelPosition.inside,
-                                    labelAlignment: ChartDataLabelAlignment.top,
-                                  ),
-                                  dataSource: chartData,
-
-                                  pointColorMapper: (ChartData data, _) => data.color,
+                                  pointColorMapper: (ChartData data, _) =>
+                                      data.color,
                                   xValueMapper: (ChartData data, _) => data.x,
                                   yValueMapper: (ChartData data, _) => data.y,
                                   radius: '100%',
