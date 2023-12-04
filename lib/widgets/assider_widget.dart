@@ -1,6 +1,7 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
+import 'package:mobile_pavpl/app/routing/route_handler.dart';
 import 'package:mobile_pavpl/providers/global_provider.dart';
 
 class AsiderWidget extends ConsumerWidget {
@@ -76,7 +77,7 @@ class AsiderWidget extends ConsumerWidget {
                       : null),
             ),
             ListTile(
-              onTap: ()=> _homeState.changeBottomIndex(3),
+              onTap: () => _homeState.changeBottomIndex(3),
               textColor: Colors.grey,
               iconColor: Theme.of(context).colorScheme.primary,
               leading: const Icon(
@@ -89,21 +90,24 @@ class AsiderWidget extends ConsumerWidget {
             ),
             const Spacer(),
             ListTile(
+              onTap: () => _homeState.changeBottomIndex(4),
               textColor: Colors.grey,
               iconColor: Theme.of(context).colorScheme.primary,
               leading: const Icon(
                 EvaIcons.settingsOutline,
               ),
               title: Text('Configurações',
-                  style: _homeState.bottomIndex == 5
+                  style: _homeState.bottomIndex == 4
                       ? TextStyle(color: Theme.of(context).colorScheme.primary)
                       : null),
             ),
             ListTile(
               textColor: Colors.grey,
               onTap: () {
-                // Navigator.of(context).pushNamedAndRemoveUntil(
-                //     RouteHandler.login, (route) => false);
+                Navigator.of(context)
+                    .pushNamedAndRemoveUntil(
+                        MRRoutes.tabletLogin, (route) => false)
+                    .then((value) => _homeState.changeBottomIndex(0));
               },
               iconColor: Theme.of(context).colorScheme.primary,
               leading: const Icon(

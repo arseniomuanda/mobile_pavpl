@@ -2,10 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_pavpl/providers/global_provider.dart';
-import 'package:mobile_pavpl/widgets/agendamento_view.dart';
-import 'package:mobile_pavpl/widgets/dashboard_view.dart';
-import 'package:mobile_pavpl/widgets/reclusos_page.dart';
-import 'package:mobile_pavpl/widgets/visitas_page.dart';
+import 'package:mobile_pavpl/views/tablet/home_pagas/agendamento_page.dart';
+import 'package:mobile_pavpl/views/tablet/home_pagas/config_page.dart';
+import 'package:mobile_pavpl/views/tablet/home_pagas/dashboard_page.dart';
+import 'package:mobile_pavpl/views/tablet/home_pagas/reclusos_page.dart';
+import 'package:mobile_pavpl/views/tablet/home_pagas/visitas_page.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class TabletHomePage extends ConsumerStatefulWidget {
@@ -34,15 +35,19 @@ class _TabletHomePageState extends ConsumerState<TabletHomePage> {
     var size = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Theme.of(context).colorScheme.onBackground,
-      body: PageView(
-        controller: _homeState.homePageController,
-        onPageChanged: _homeState.changeBottomIndex,
-        children: [
-          DashbordPage(size: size),
-          ReclusoPage(size: size),
-          VisitasPage(size: size),
-          AgendamentoPage(size: size)
-        ],
+      body: SafeArea(
+        child: PageView(
+          pageSnapping: false,
+          controller: _homeState.homePageController,
+          onPageChanged: _homeState.changeBottomIndex,
+          children: [
+            DashbordPage(size: size),
+            ReclusoPage(size: size),
+            VisitasPage(size: size),
+            AgendamentoPage(size: size),
+            ConfigPage(size: size)
+          ],
+        ),
       ),
     );
   }

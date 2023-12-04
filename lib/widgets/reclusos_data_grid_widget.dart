@@ -2,27 +2,28 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:mobile_pavpl/app/core/consts.dart';
 import 'package:mobile_pavpl/app/data/dummy_data.dart';
 import 'package:mobile_pavpl/providers/global_provider.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
-class DataGridWidget extends ConsumerStatefulWidget {
-  const DataGridWidget({Key? key, required this.size}) : super(key: key);
+class ReclusosDataGridWidget extends ConsumerStatefulWidget {
+  const ReclusosDataGridWidget({Key? key, required this.size}) : super(key: key);
   final Size size;
   @override
-  _DataGridWidgetState createState() => _DataGridWidgetState();
+  _ReclusosDataGridWidgetState createState() => _ReclusosDataGridWidgetState();
 }
 
-class _DataGridWidgetState extends ConsumerState<DataGridWidget> {
+class _ReclusosDataGridWidgetState extends ConsumerState<ReclusosDataGridWidget> {
   final _faker = Faker();
 
-  late final VisitaDataSource _listDataSource;
+  late final ReclusosDataSource _listDataSource;
   final int rowsPerPage = 10;
 
   @override
   void initState() {
-    _listDataSource = VisitaDataSource(reclusos: visitas);
+    _listDataSource = ReclusosDataSource(reclusos: presos);
     super.initState();
   }
 
@@ -45,10 +46,10 @@ class _DataGridWidgetState extends ConsumerState<DataGridWidget> {
                 selectionMode: SelectionMode.single,
                 onSelectionChanged: (addedRows, removedRows) {
                   print(addedRows.first.getCells()[1].value);
-                  if (ref.read(visitaProvider).id !=
+                  if (ref.read(prisonerProvider).id !=
                       addedRows.first.getCells()[1].value) {
                     setState(() {
-                      ref.read(visitaProvider.notifier).update((state) =>
+                      ref.read(prisonerProvider.notifier).update((state) =>
                       addedRows.first.getCells()[1].value);
                     });
                   }
@@ -58,7 +59,7 @@ class _DataGridWidgetState extends ConsumerState<DataGridWidget> {
                 source: _listDataSource,
                 columns: [
                   GridColumn(
-                    width: 50,
+                    width: 70,
                     columnName: 'number',
                     label: Text(
                       '#',
@@ -71,7 +72,7 @@ class _DataGridWidgetState extends ConsumerState<DataGridWidget> {
                   GridColumn(
                     columnName: 'nome',
                     label: Text(
-                      'Nome do Visitante',
+                      'Nome',
                       overflow: TextOverflow.ellipsis,
                       textAlign: TextAlign.center,
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -81,7 +82,7 @@ class _DataGridWidgetState extends ConsumerState<DataGridWidget> {
                   GridColumn(
                       columnName: 'nome_prisioneiro',
                       label: Text(
-                        'Nome do Prisioneiro',
+                        'Crime',
                         overflow: TextOverflow.ellipsis,
                         style: Theme.of(context)
                             .textTheme
@@ -91,18 +92,18 @@ class _DataGridWidgetState extends ConsumerState<DataGridWidget> {
                                 color: Colors.black),
                       )),
                   GridColumn(
-                    columnName: 'entrada',
+                    columnName: 'entryDay',
                     label: Text(
-                      'Hora de Entrada',
+                      'Dia de entrada',
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           fontWeight: FontWeight.bold, color: Colors.black),
                     ),
                   ),
                   GridColumn(
-                    columnName: 'saida',
+                    columnName: 'outDay',
                     label: Text(
-                      'Hora de Saida',
+                      'Dia de saída',
                       overflow: TextOverflow.ellipsis,
                       style: Theme.of(context).textTheme.titleMedium!.copyWith(
                           fontWeight: FontWeight.bold, color: Colors.black),
@@ -146,32 +147,20 @@ class _DataGridWidgetState extends ConsumerState<DataGridWidget> {
   }
 }
 
-String formatHour(TimeOfDay timeOfDay) {
-  final now = DateTime.now();
-  final dt =
-      DateTime(now.year, now.month, now.day, timeOfDay.hour, timeOfDay.minute);
-  final format = DateFormat.jm(); //"6:00 AM"
-  return format.format(dt);
-}
-
-class VisitaDataSource extends DataGridSource {
-  VisitaDataSource({List<Visita>? reclusos}) {
+class ReclusosDataSource extends DataGridSource {
+  ReclusosDataSource({List<Prisoner>? reclusos}) {
     _reclusos = reclusos!
         .map<DataGridRow>((e) => DataGridRow(cells: [
               DataGridCell<int>(
-                  columnName: 'number', value: reclusos.indexOf(e) + 1),
-              DataGridCell<Visita>(columnName: 'nome', value: e),
+                  columnName: 'id', value: reclusos.indexOf(e) + 1),
+              DataGridCell<Prisoner>(columnName: 'nome', value: e),
               DataGridCell<String>(
-                  columnName: 'nome_prisioneiro',
-                  value: presos
-                      .where(
-                          (element) => element.id == int.parse(e.idOfPrisoner!))
-                      .first
-                      .name!),
+                  columnName: 'crime',
+                  value: e.crime),
               DataGridCell<String>(
-                  columnName: 'entrada', value: formatHour(e.arrivalTime!)),
+                  columnName: 'entryDay', value: formateDate2.format(e.entryDay!)),
               DataGridCell<String>(
-                  columnName: 'saida', value: formatHour(e.leftAt!)),
+                  columnName: 'dayOut', value: formateDate2.format(e.dayOut!)),
             ]))
         .toList();
   }
@@ -192,13 +181,13 @@ class VisitaDataSource extends DataGridSource {
       color: getRowBackgroundColor(),
       cells: row.getCells().map<Widget>((e) {
         if (e.columnName == 'nome') {
-          var visita = e.value as Visita;
+          var preso = e.value as Prisoner;
           return Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
-              CircleAvatar(backgroundImage: NetworkImage(visita.photo!)),
+              CircleAvatar(backgroundImage: NetworkImage(preso.photo!)),
               const SizedBox(width: 10,),
-              Text(visita.nameOfVisitor!)
+              Text(preso.name!)
             ],
           );
         }

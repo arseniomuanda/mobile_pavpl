@@ -2,9 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_pavpl/providers/global_provider.dart';
 import 'package:mobile_pavpl/widgets/assider_widget.dart';
-import 'package:mobile_pavpl/widgets/data_grid_widget.dart';
+import 'package:mobile_pavpl/widgets/reclusos_data_grid_widget.dart';
 import 'package:mobile_pavpl/widgets/text_field.dart';
 import 'package:mobile_pavpl/widgets/visitante_perfil_widget.dart';
+import 'package:mobile_pavpl/widgets/visitas_data_grid_widget.dart';
 
 
 class VisitasPage extends ConsumerWidget {
@@ -50,7 +51,7 @@ class VisitasPage extends ConsumerWidget {
                       child: Row(
                         children: [
                           Text(
-                            "Relatorio de visitas",
+                            "Lista de visitas",
                             style: Theme.of(context)
                                 .textTheme
                                 .headlineLarge!
@@ -68,7 +69,7 @@ class VisitasPage extends ConsumerWidget {
                   Expanded(
                       child: Padding(
                         padding: const EdgeInsets.all(16.0),
-                        child: DataGridWidget(size: size),
+                        child: VisitasDataGridWidget(size: size),
                       )),
                 ],
               ),

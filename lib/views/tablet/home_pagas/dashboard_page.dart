@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_pavpl/app/models/chart_data.dart';
 import 'package:mobile_pavpl/providers/global_provider.dart';
 import 'package:mobile_pavpl/widgets/assider_widget.dart';
-import 'package:mobile_pavpl/widgets/data_grid_widget.dart';
+import 'package:mobile_pavpl/widgets/reclusos_data_grid_widget.dart';
 import 'package:mobile_pavpl/widgets/text_field.dart';
 import 'package:mobile_pavpl/widgets/visitante_perfil_widget.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';

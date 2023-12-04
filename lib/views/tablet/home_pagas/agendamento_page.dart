@@ -138,7 +138,8 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
                               vertical: 4.0,
                             ),
                             decoration: BoxDecoration(
-                              border: Border.all(),
+                              border: Border.all(color: Theme.of(context).colorScheme.primary),
+
                               borderRadius: BorderRadius.circular(12.0),
                             ),
                             child: ListTile(

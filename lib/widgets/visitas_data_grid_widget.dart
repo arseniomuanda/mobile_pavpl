@@ -2,19 +2,20 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
+import 'package:mobile_pavpl/app/core/consts.dart';
 import 'package:mobile_pavpl/app/data/dummy_data.dart';
 import 'package:mobile_pavpl/providers/global_provider.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 
-class DataGridWidget extends ConsumerStatefulWidget {
-  const DataGridWidget({Key? key, required this.size}) : super(key: key);
+class VisitasDataGridWidget extends ConsumerStatefulWidget {
+  const VisitasDataGridWidget({Key? key, required this.size}) : super(key: key);
   final Size size;
   @override
-  _DataGridWidgetState createState() => _DataGridWidgetState();
+  _VisitasDataGridState createState() => _VisitasDataGridState();
 }
 
-class _DataGridWidgetState extends ConsumerState<DataGridWidget> {
+class _VisitasDataGridState extends ConsumerState<VisitasDataGridWidget> {
   final _faker = Faker();
 
   late final VisitaDataSource _listDataSource;
@@ -144,14 +145,6 @@ class _DataGridWidgetState extends ConsumerState<DataGridWidget> {
       ),
     );
   }
-}
-
-String formatHour(TimeOfDay timeOfDay) {
-  final now = DateTime.now();
-  final dt =
-      DateTime(now.year, now.month, now.day, timeOfDay.hour, timeOfDay.minute);
-  final format = DateFormat.jm(); //"6:00 AM"
-  return format.format(dt);
 }
 
 class VisitaDataSource extends DataGridSource {
