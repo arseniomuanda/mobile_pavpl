@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_pavpl/app/data/dummy_data.dart';
 import 'package:mobile_pavpl/providers/global_provider.dart';
+import 'package:mobile_pavpl/widgets/rich_text_widget.dart';
 
 class ReclusoWidget extends ConsumerWidget {
   ReclusoWidget({
@@ -89,36 +90,4 @@ class ReclusoWidget extends ConsumerWidget {
   }
 }
 
-class RichTextWidget extends StatelessWidget {
-  RichTextWidget({
-    super.key,
-    required this.descricao,
-    required this.dado,
-  });
 
-  String? descricao;
-  String? dado;
-
-  @override
-  Widget build(BuildContext context) {
-    return RichText(
-      text: TextSpan(
-        children: [
-          TextSpan(
-            text: '$descricao:',
-            children: [
-              TextSpan(
-                text: ' $dado',
-                style: TextStyle(
-                  fontWeight: FontWeight.w600,
-                  color: Colors.grey.withOpacity(0.6),
-                ),
-              )
-            ],
-            style: Theme.of(context).textTheme.titleMedium,
-          ),
-        ],
-      ),
-    );
-  }
-}
