@@ -48,6 +48,7 @@ dependencies:
   flutter_riverpod: ^2.4.9
   syncfusion_flutter_core: ^22.2.12
   table_calendar: ^3.0.9
+  awesome_select: ^6.0.0
 
 dev_dependencies:
   flutter_test:
