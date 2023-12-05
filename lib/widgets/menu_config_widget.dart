@@ -14,6 +14,7 @@ class MenuConfigWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
+    var index = ref.watch(menuState);
     return Padding(
       padding: const EdgeInsets.only(top: 20.0),
       child: Container(
@@ -25,7 +26,7 @@ class MenuConfigWidget extends ConsumerWidget {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('Menu',
+              Text('Opções',
                   style: TextStyle(
                     fontSize: 25,
                     fontWeight: FontWeight.w600,
@@ -34,7 +35,18 @@ class MenuConfigWidget extends ConsumerWidget {
               const Divider(color: Colors.black),
               const SizedBox(height: 40),
               ListTile(
-                //onTap: () => _homeState.changeBottomIndex(0),
+                onTap: () => index.changeIndex(0),
+                  textColor: Colors.grey,
+                  iconColor: Theme.of(context).colorScheme.primary,
+                  leading: const Icon(
+                    EvaIcons.infoOutline,
+                  ),
+                  title: Text(
+                      'Sobre',
+                      style: index.index == 0 ? TextStyle(color: Theme.of(context).colorScheme.primary): null
+                  )),
+              ListTile(
+                  onTap: () => index.changeIndex(1),
                   textColor: Colors.grey,
                   iconColor: Theme.of(context).colorScheme.primary,
                   leading: const Icon(
@@ -42,51 +54,51 @@ class MenuConfigWidget extends ConsumerWidget {
                   ),
                   title: Text(
                       'Meu Perfil',
-                      style: TextStyle(color: Theme.of(context).colorScheme.primary)
+                      style: index.index == 1 ? TextStyle(color: Theme.of(context).colorScheme.primary): null
                   )),
               ListTile(
-                  //onTap: () => _homeState.changeBottomIndex(0),
+                  onTap: () => index.changeIndex(2),
                   textColor: Colors.grey,
                   iconColor: Theme.of(context).colorScheme.primary,
                   leading: const Icon(
-                    EvaIcons.infoOutline,
+                    Icons.house_siding_sharp,
                   ),
                   title: Text(
-                    'Sobre',
-                    style: TextStyle(color: Theme.of(context).colorScheme.primary)
+                      'Blocos',
+                      style: index.index == 2 ? TextStyle(color: Theme.of(context).colorScheme.primary): null
                   )),
               ListTile(
-                //onTap: () => _homeState.changeBottomIndex(0),
+                  onTap: () => index.changeIndex(3),
                   textColor: Colors.grey,
                   iconColor: Theme.of(context).colorScheme.primary,
                   leading: const Icon(
-                    EvaIcons.pr,
+                    Icons.grid_on,
                   ),
                   title: Text(
                       'Celas',
-                      style: TextStyle(color: Theme.of(context).colorScheme.primary)
+                      style: index.index == 3 ? TextStyle(color: Theme.of(context).colorScheme.primary): null
                   )),
               ListTile(
-                //onTap: () => _homeState.changeBottomIndex(0),
+                  onTap: () => index.changeIndex(4),
                   textColor: Colors.grey,
                   iconColor: Theme.of(context).colorScheme.primary,
                   leading: const Icon(
-                    EvaIcons.gridOutline,
+                    EvaIcons.lockOutline,
                   ),
                   title: Text(
                       'Acessos',
-                      style: TextStyle(color: Theme.of(context).colorScheme.primary)
+                      style: index.index == 4 ? TextStyle(color: Theme.of(context).colorScheme.primary): null
                   )),
               ListTile(
-                //onTap: () => _homeState.changeBottomIndex(0),
+                  onTap: () => index.changeIndex(5),
                   textColor: Colors.grey,
                   iconColor: Theme.of(context).colorScheme.primary,
                   leading: const Icon(
-                    EvaIcons.gridOutline,
+                    Icons.group_add_outlined,
                   ),
                   title: Text(
                       'Utilizadores',
-                      style: TextStyle(color: Theme.of(context).colorScheme.primary)
+                      style: index.index == 5 ? TextStyle(color: Theme.of(context).colorScheme.primary): null
                   )),
             ],
           ),
