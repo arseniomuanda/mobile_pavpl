@@ -129,7 +129,7 @@ List<User> users = List.generate(10, (index) {
       email: _faker.internet
           .email(), // 40 é igual ao numero de presos se for 41 nunca vai achar um preso pra fazer relação
       bi: _faker.randomGenerator
-          .integer(53948759348, min: 934857497)
+          .fromCharSet('35894ABCREA32DS', 14)
           .toString(),
       nasc: DateTime.parse('1995-10-30'),
       phone: _faker.phoneNumber.toString(),
