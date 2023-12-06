@@ -1,15 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobile_pavpl/app/models/chart_data.dart';
 import 'package:mobile_pavpl/providers/global_provider.dart';
 import 'package:mobile_pavpl/widgets/assider_widget.dart';
-import 'package:mobile_pavpl/widgets/menu/about_widget.dart';
-import 'package:mobile_pavpl/widgets/menu/user_perfil_widget.dart';
-import 'package:mobile_pavpl/widgets/menu_config_widget.dart';
-import 'package:mobile_pavpl/widgets/reclusos_data_grid_widget.dart';
-import 'package:mobile_pavpl/widgets/text_field.dart';
-import 'package:mobile_pavpl/widgets/visitante_perfil_widget.dart';
-import 'package:syncfusion_flutter_charts/charts.dart';
+import 'package:mobile_pavpl/widgets/settings/pages/about_page.dart';
+import 'package:mobile_pavpl/widgets/settings/pages/acessos_page.dart';
+import 'package:mobile_pavpl/widgets/settings/pages/blocos_page.dart';
+import 'package:mobile_pavpl/widgets/settings/pages/celas_page.dart';
+import 'package:mobile_pavpl/widgets/settings/pages/user_perfil_page.dart';
+import 'package:mobile_pavpl/widgets/settings/pages/menu_config_widget.dart';
 
 class ConfigPage extends ConsumerWidget {
   final Size size;
@@ -37,10 +35,11 @@ class ConfigPage extends ConsumerWidget {
                   IndexedStack(
                     index: index,
                     children: [
-                      AboutWidget(size: size),
-                      UserPerfilWidget(size: size),
-                      Text('Arsenio 3'),
-                      Text('Arsenio 4'),
+                      AboutPage(size: size),
+                      UserPerfilPage(size: size),
+                      BlocosPage(),
+                      CelasPage(),
+                      AcessoPage(),
                       Text('Arsenio 5'),
                       Text('Arsenio 6'),
                     ],

@@ -71,7 +71,87 @@ class Prisoner {
   }
 }
 
+class User {
+  int? id;
+  String? name;
+  String? email;
+  String? bi;
+  String? phone;
+  DateTime? nasc;
+  String? photo;
+  int? acesso;
+
+  User(
+      {this.id,
+      this.name,
+      this.email,
+      this.bi,
+      this.photo,
+      this.nasc,
+      this.phone,
+      this.acesso});
+}
+
+class Bloco {
+  int? id;
+  String? name;
+
+  Bloco({
+    this.id,
+    this.name,
+  });
+}
+
+class Acesso {
+  int? id;
+  String? name;
+
+  Acesso({
+    this.id,
+    this.name,
+  });
+}
+
+class Cela {
+  int? id;
+  String? name;
+  int? bloco;
+
+  Cela({this.id, this.name, this.bloco});
+}
+
 var _faker = Faker();
+
+List<User> users = List.generate(10, (index) {
+  return User(
+      id: index + 1,
+      name: '${_faker.person.firstName()} ${_faker.person.lastName()}',
+      email: _faker.internet
+          .email(), // 40 é igual ao numero de presos se for 41 nunca vai achar um preso pra fazer relação
+      bi: _faker.randomGenerator
+          .integer(53948759348, min: 934857497)
+          .toString(),
+      nasc: DateTime.parse('1995-10-30'),
+      phone: _faker.phoneNumber.toString(),
+      acesso: _faker.randomGenerator.integer(3, min: 1));
+});
+
+List<Bloco> blocos = List.generate(10, (index) {
+  return Bloco(id: ++index, name: _faker.person.firstName());
+});
+
+List<Cela> celas = List.generate(50, (index) {
+  return Cela(
+      id: ++index,
+      name: _faker.person.firstName(),
+      bloco: _faker.randomGenerator.integer(10, min: 1));
+});
+
+List<Acesso> acessos = [
+  Acesso(id: 1, name: 'Admin'),
+  Acesso(id: 2, name: 'Super Admin'),
+  Acesso(id: 3, name: 'Vigilante')
+];
 
 List<Prisoner> presos = List.generate(
   40,
@@ -100,7 +180,7 @@ List<Prisoner> presos = List.generate(
 List<Visita> visitas = List.generate(
     80,
     (index) => Visita(
-        id: index.toString(),
+        id: (++index).toString(),
         nameOfVisitor:
             '${_faker.person.firstName()} ${_faker.person.lastName()}',
         idOfPrisoner:
@@ -123,3 +203,4 @@ List<Visita> visitas = List.generate(
             ? 'Masculino'
             : 'Feminino',
         totalVisitas: _faker.randomGenerator.integer(40, min: 1)));
+

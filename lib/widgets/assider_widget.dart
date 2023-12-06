@@ -107,7 +107,10 @@ class AsiderWidget extends ConsumerWidget {
                 Navigator.of(context)
                     .pushNamedAndRemoveUntil(
                         MRRoutes.tabletLogin, (route) => false)
-                    .then((value) => _homeState.changeBottomIndex(0));
+                    .then((value){
+                      _homeState.changeBottomIndex(0);
+                      ref.watch(menuState).changeIndex(0);
+                    });
               },
               iconColor: Theme.of(context).colorScheme.primary,
               leading: const Icon(
