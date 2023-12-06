@@ -4,15 +4,15 @@ import 'package:flutter/material.dart';
 import 'package:mobile_pavpl/widgets/text_field.dart';
 import 'package:mobile_pavpl/choices.dart' as choices;
 
-class UserPerfilWidget extends StatefulWidget {
-  UserPerfilWidget({super.key, required this.size});
+class UserPerfilPage extends StatefulWidget {
+  UserPerfilPage({super.key, required this.size});
   final Size size;
 
   @override
-  State<UserPerfilWidget> createState() => _UserPerfilWidgetState();
+  State<UserPerfilPage> createState() => _UserPerfilPageState();
 }
 
-class _UserPerfilWidgetState extends State<UserPerfilWidget> {
+class _UserPerfilPageState extends State<UserPerfilPage> {
 
   List<S2Choice<String>> acessps = [
     S2Choice<String>(value: 'Admin', title: 'Admin'),
