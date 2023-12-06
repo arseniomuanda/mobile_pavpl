@@ -16,12 +16,12 @@ class UserDataGridWidget extends ConsumerStatefulWidget {
 }
 
 class _UserDataGridWidgetState extends ConsumerState<UserDataGridWidget> {
-  late final CelasDataSource _listDataSource;
+  late final UserDataSource _listDataSource;
   final int rowsPerPage = 10;
 
   @override
   void initState() {
-    _listDataSource = CelasDataSource(celas: celas);
+    _listDataSource = UserDataSource(users: users);
     super.initState();
   }
 
@@ -70,9 +70,18 @@ class _UserDataGridWidgetState extends ConsumerState<UserDataGridWidget> {
                     ),
                   ),
                   GridColumn(
-                      columnName: 'bloco',
+                      columnName: 'email',
                       label: Text(
-                        'Bloco',
+                        'Email',
+                        overflow: TextOverflow.ellipsis,
+                        textAlign: TextAlign.center,
+                        style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                            fontWeight: FontWeight.bold, color: Colors.black),
+                      )),
+                  GridColumn(
+                      columnName: 'acesso',
+                      label: Text(
+                        'Acesso',
                         overflow: TextOverflow.ellipsis,
                         textAlign: TextAlign.center,
                         style: Theme.of(context).textTheme.titleMedium!.copyWith(
@@ -116,18 +125,19 @@ class _UserDataGridWidgetState extends ConsumerState<UserDataGridWidget> {
   }
 }
 
-class CelasDataSource extends DataGridSource {
-  CelasDataSource({List<Cela>? celas}) {
-    _celas = celas!
+class UserDataSource extends DataGridSource {
+  UserDataSource({List<User>? users}) {
+    _users = users!
         .map<DataGridRow>((e) => DataGridRow(cells: [
       DataGridCell<int>(columnName: 'id', value: e.id),
       DataGridCell<String>(columnName: 'nome', value: e.name),
-      DataGridCell<String>(columnName: 'bloco', value: blocos.where((element) => e.bloco! == element.id).first.name),
+      DataGridCell<String>(columnName: 'email', value: e.email),
+      DataGridCell<String>(columnName: 'acesso', value: acessos.where((element) => element.id == e.acesso).first.name),
     ]))
         .toList();
   }
 
-  List<DataGridRow> _celas = [];
+  List<DataGridRow> _users = [];
   @override
   DataGridRowAdapter? buildRow(DataGridRow row) {
     Color getRowBackgroundColor() {
@@ -150,5 +160,5 @@ class CelasDataSource extends DataGridSource {
   }
 
   @override
-  List<DataGridRow> get rows => _celas;
+  List<DataGridRow> get rows => _users;
 }
