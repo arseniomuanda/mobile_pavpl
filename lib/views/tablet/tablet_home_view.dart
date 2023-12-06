@@ -3,7 +3,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_pavpl/providers/global_provider.dart';
 import 'package:mobile_pavpl/views/tablet/home_pagas/agendamento_page.dart';
-import 'package:mobile_pavpl/views/tablet/home_pagas/config_page.dart';
+import 'package:mobile_pavpl/widgets/settings/pages/config_page.dart';
 import 'package:mobile_pavpl/views/tablet/home_pagas/dashboard_page.dart';
 import 'package:mobile_pavpl/views/tablet/home_pagas/reclusos_page.dart';
 import 'package:mobile_pavpl/views/tablet/home_pagas/visitas_page.dart';
