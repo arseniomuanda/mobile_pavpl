@@ -50,6 +50,7 @@ class _UserDataGridWidgetState extends ConsumerState<UserDataGridWidget> {
                 source: _listDataSource,
                 columns: [
                   GridColumn(
+                    width: 70,
                     columnName: 'id',
                     label: Text(
                       '#',
