@@ -45,14 +45,23 @@ class _ReclusosDataGridWidgetState extends ConsumerState<ReclusosDataGridWidget>
                 showSortNumbers: true,
                 selectionMode: SelectionMode.single,
                 onSelectionChanged: (addedRows, removedRows) {
-                  print(addedRows.first.getCells()[1].value);
-                  if (ref.read(prisonerProvider).id !=
-                      addedRows.first.getCells()[1].value) {
-                    setState(() {
-                      ref.read(prisonerProvider.notifier).update((state) =>
-                      addedRows.first.getCells()[1].value);
-                    });
-                  }
+
+                  ref
+                      .read(prisonerProvider.notifier)
+                      .update((state) => Prisoner());
+
+                  Future.delayed(const Duration(seconds: 1)).then((value){
+                    print(addedRows.first.getCells()[1].value);
+                    if (ref.read(prisonerProvider).id !=
+                        addedRows.first.getCells()[1].value) {
+                      setState(() {
+                        ref.read(prisonerProvider.notifier).update((state) =>
+                        addedRows.first.getCells()[1].value);
+                      });
+                    }
+                  });
+
+
                 },
                 columnWidthMode: ColumnWidthMode.fill,
                 rowsPerPage: rowsPerPage,

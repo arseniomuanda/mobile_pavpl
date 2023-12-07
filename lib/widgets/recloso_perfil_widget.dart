@@ -4,6 +4,7 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_pavpl/app/data/dummy_data.dart';
 import 'package:mobile_pavpl/providers/global_provider.dart';
 import 'package:mobile_pavpl/widgets/rich_text_widget.dart';
+import 'package:mobile_pavpl/widgets/text_field.dart';
 
 class ReclusoWidget extends ConsumerWidget {
   ReclusoWidget({
@@ -14,6 +15,8 @@ class ReclusoWidget extends ConsumerWidget {
 
   Prisoner? preso;
   final Size size;
+
+  var nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -57,31 +60,43 @@ class ReclusoWidget extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 40),
-              RichTextWidget(
-                descricao: 'Nome',
-                dado: preso!.name,
+              MRTextField(
+                  borderRadius: 60,
+                  initialValue: preso!.name,
+                  prefixIcon: Icon(EvaIcons.text),
+                  label: 'Nome',
+                  hint: '',
+                  controller: null
               ),
-              const SizedBox(height: 20),
-              RichTextWidget(
-                descricao: 'Crime',
-                dado: preso!.crime,
+              MRTextField(
+                  borderRadius: 60,
+                  initialValue: preso!.crime,
+                  prefixIcon: Icon(EvaIcons.text),
+                  label: 'Crime',
+                  hint: '',
+                  controller: null
+              ),MRTextField(
+                  borderRadius: 60,
+                  initialValue: preso!.cell,
+                  prefixIcon: Icon(EvaIcons.text),
+                  label: 'Cela',
+                  hint: '',
+                  controller: null
+              ),MRTextField(
+                  borderRadius: 60,
+                  initialValue: preso!.block,
+                  prefixIcon: Icon(EvaIcons.text),
+                  label: 'Bloco',
+                  hint: '',
+                  controller: null
               ),
-              const SizedBox(height: 20),
-              RichTextWidget(
-                descricao: 'Celula',
-                dado: preso!.cell,
-              ),
-              const SizedBox(height: 20),
-              RichTextWidget(
-                descricao: 'Bloco',
-                dado: preso!.block,
-              ),
-              const SizedBox(height: 20),
-              RichTextWidget(
-                descricao: 'Cadeia',
-                dado: preso!.prison,
-              ),
-              const SizedBox(height: 20),
+              const Spacer(),
+              Align(
+                alignment: Alignment.centerRight,
+                child: ElevatedButton(onPressed: (){}, style: ElevatedButton.styleFrom(
+                    minimumSize: const Size(200, 60)
+                ), child: const Text('Salvar', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),)),
+              )
             ],
           ),
         ),
