@@ -61,6 +61,12 @@ List<S2Choice<Cela>> s2Celas = [
   }).toList()
 ];
 
+List<S2Choice<Bloco>> s2Blocos = [
+  ...blocos.map((e) {
+    return S2Choice<Bloco>(value: e, title: e.name);
+  }).toList()
+];
+
 List<S2Choice<String>> categories = [
   S2Choice<String>(value: 'ele', title: 'Electronics'),
   S2Choice<String>(value: 'aud', title: 'Audio & Video'),

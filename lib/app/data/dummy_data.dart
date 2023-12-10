@@ -35,7 +35,7 @@ class Prisoner {
   String? name;
   String? crime;
   int? cell;
-  String? block;
+  int? bloco;
   String? wing;
   String? prison;
   String? photo;
@@ -47,7 +47,7 @@ class Prisoner {
     this.name,
     this.crime,
     this.cell,
-    this.block,
+    this.bloco,
     this.wing,
     this.prison,
     this.dayOut,
@@ -61,7 +61,7 @@ class Prisoner {
       name: '',
       crime: '',
       cell: 0,
-      block: '',
+      bloco: 0,
       wing: '',
       prison: '',
       entryDay: DateTime.now(),
@@ -161,7 +161,7 @@ List<Prisoner> presos = List.generate(
             ? 'Roubo'
             : 'Trafico de Drogas',
     cell: _faker.randomGenerator.integer(50, min: 1),
-    block: _faker.randomGenerator.fromCharSet("ABCDEFGHIJKLMN", 1),
+    bloco: _faker.randomGenerator.integer(10, min: 1),
     wing: _faker.randomGenerator.fromCharSet("ABCDEFGHIJKLMN", 1),
     prison: 'Cadeia de Viana',
     dayOut: DateTime.parse('2025-10-30'),
