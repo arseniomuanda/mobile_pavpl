@@ -1,9 +1,12 @@
+import 'package:awesome_select/awesome_select.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_pavpl/app/data/dummy_data.dart';
+import 'package:mobile_pavpl/choices.dart';
 import 'package:mobile_pavpl/providers/global_provider.dart';
 import 'package:mobile_pavpl/widgets/rich_text_widget.dart';
+import 'package:mobile_pavpl/widgets/text_field.dart';
 
 class ReclusoWidget extends ConsumerWidget {
   ReclusoWidget({
@@ -14,6 +17,8 @@ class ReclusoWidget extends ConsumerWidget {
 
   Prisoner? preso;
   final Size size;
+
+  var nameController = TextEditingController();
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
@@ -57,31 +62,137 @@ class ReclusoWidget extends ConsumerWidget {
                 ),
               ),
               const SizedBox(height: 40),
-              RichTextWidget(
-                descricao: 'Nome',
-                dado: preso!.name,
+              MRTextField(
+                  borderRadius: 60,
+                  initialValue: preso!.name,
+                  prefixIcon: Icon(EvaIcons.text),
+                  label: 'Nome',
+                  hint: '',
+                  controller: null),
+              MRTextField(
+                  borderRadius: 60,
+                  initialValue: preso!.crime,
+                  prefixIcon: Icon(EvaIcons.text),
+                  label: 'Crime',
+                  hint: '',
+                  controller: null),
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: SmartSelect<Cela?>.single(
+                  title: 'Selecionar cela',
+                  selectedValue:
+                      celas.where((element) => element.id == preso!.cell).first,
+                  choiceItems: s2Celas,
+                  modalType: S2ModalType.bottomSheet,
+                  onChange: (selected) {
+                    //setState(() => _framework = selected.value);
+                  },
+                  tileBuilder: (context, state) {
+                    return InkWell(
+                      onTap: state.showModal,
+                      child: Container(
+                        padding: const EdgeInsets.all(7),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(60)),
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Theme.of(context).primaryColor,
+                              child: Text(
+                                state.selected.toString()[0],
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            const SizedBox(width: 20),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(state.title ?? ''),
+                                Text(
+                                  state.selected.toString(),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                )
+                              ],
+                            ),
+                            const Spacer(),
+                            const Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.grey,
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
-              const SizedBox(height: 20),
-              RichTextWidget(
-                descricao: 'Crime',
-                dado: preso!.crime,
+              Padding(
+                padding: const EdgeInsets.symmetric(vertical: 10),
+                child: SmartSelect<Bloco?>.single(
+                  title: 'Selecionar bloco',
+                  selectedValue:
+                  blocos.where((element) => element.id == preso!.bloco).first,
+                  choiceItems: s2Blocos,
+                  modalType: S2ModalType.bottomSheet,
+                  onChange: (selected) {
+                    //setState(() => _framework = selected.value);
+                  },
+                  tileBuilder: (context, state) {
+                    return InkWell(
+                      onTap: state.showModal,
+                      child: Container(
+                        padding: const EdgeInsets.all(7),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(60)),
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Theme.of(context).primaryColor,
+                              child: Text(
+                                state.selected.toString()[0],
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            const SizedBox(width: 20),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(state.title ?? ''),
+                                Text(
+                                  state.selected.toString(),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                )
+                              ],
+                            ),
+                            const Spacer(),
+                            const Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.grey,
+                            ),
+                          ],
+                        ),
+                      ),
+                    );
+                  },
+                ),
               ),
-              const SizedBox(height: 20),
-              RichTextWidget(
-                descricao: 'Celula',
-                dado: preso!.cell,
-              ),
-              const SizedBox(height: 20),
-              RichTextWidget(
-                descricao: 'Bloco',
-                dado: preso!.block,
-              ),
-              const SizedBox(height: 20),
-              RichTextWidget(
-                descricao: 'Cadeia',
-                dado: preso!.prison,
-              ),
-              const SizedBox(height: 20),
+              const Spacer(),
+              Align(
+                alignment: Alignment.centerRight,
+                child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: const Size(200, 60)),
+                    child: const Text(
+                      'Salvar',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+                    )),
+              )
             ],
           ),
         ),
@@ -89,5 +200,3 @@ class ReclusoWidget extends ConsumerWidget {
     );
   }
 }
-
-

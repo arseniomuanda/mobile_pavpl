@@ -34,8 +34,8 @@ class Prisoner {
   int? id;
   String? name;
   String? crime;
-  String? cell;
-  String? block;
+  int? cell;
+  int? bloco;
   String? wing;
   String? prison;
   String? photo;
@@ -47,7 +47,7 @@ class Prisoner {
     this.name,
     this.crime,
     this.cell,
-    this.block,
+    this.bloco,
     this.wing,
     this.prison,
     this.dayOut,
@@ -60,8 +60,8 @@ class Prisoner {
       id: 0,
       name: '',
       crime: '',
-      cell: '',
-      block: '',
+      cell: 0,
+      bloco: 0,
       wing: '',
       prison: '',
       entryDay: DateTime.now(),
@@ -128,12 +128,10 @@ List<User> users = List.generate(10, (index) {
       name: '${_faker.person.firstName()} ${_faker.person.lastName()}',
       email: _faker.internet
           .email(), // 40 é igual ao numero de presos se for 41 nunca vai achar um preso pra fazer relação
-      bi: _faker.randomGenerator
-          .fromCharSet('35894ABCREA32DS', 14)
-          .toString(),
+      bi: _faker.randomGenerator.fromCharSet('35894ABCREA32DS', 14).toString(),
       nasc: DateTime.parse('1995-10-30'),
       phone: _faker.phoneNumber.toString(),
-      acesso: _faker.randomGenerator.integer(3, min: 1));
+      acesso: _faker.randomGenerator.integer(2, min: 1));
 });
 
 List<Bloco> blocos = List.generate(10, (index) {
@@ -148,9 +146,8 @@ List<Cela> celas = List.generate(50, (index) {
 });
 
 List<Acesso> acessos = [
-  Acesso(id: 1, name: 'Admin'),
-  Acesso(id: 2, name: 'Super Admin'),
-  Acesso(id: 3, name: 'Vigilante')
+  Acesso(id: 1, name: 'Administrador'),
+  Acesso(id: 3, name: 'Funcionário')
 ];
 
 List<Prisoner> presos = List.generate(
@@ -163,9 +160,8 @@ List<Prisoner> presos = List.generate(
         : index % 3 == 0
             ? 'Roubo'
             : 'Trafico de Drogas',
-    cell:
-        '${_faker.randomGenerator.fromCharSet("ABCDEFGHIJKLMN", 1)}-${_faker.randomGenerator.integer(100)}',
-    block: _faker.randomGenerator.fromCharSet("ABCDEFGHIJKLMN", 1),
+    cell: _faker.randomGenerator.integer(50, min: 1),
+    bloco: _faker.randomGenerator.integer(10, min: 1),
     wing: _faker.randomGenerator.fromCharSet("ABCDEFGHIJKLMN", 1),
     prison: 'Cadeia de Viana',
     dayOut: DateTime.parse('2025-10-30'),
@@ -203,4 +199,3 @@ List<Visita> visitas = List.generate(
             ? 'Masculino'
             : 'Feminino',
         totalVisitas: _faker.randomGenerator.integer(40, min: 1)));
-

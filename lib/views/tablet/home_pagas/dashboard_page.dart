@@ -52,6 +52,7 @@ class DashbordPage extends ConsumerWidget {
                       ),
                     ),
                   ),
+                  SizedBox(height: size.height * 0.3),
                   Row(
                     children: [
                       SizedBox(
@@ -117,75 +118,75 @@ class DashbordPage extends ConsumerWidget {
                       )
                     ],
                   ),
-                  Row(
-                    children: [
-                      SizedBox(
-                        width: size.width * 0.4,
-                        child: SfCircularChart(
-                            legend: const Legend(
-                                position: LegendPosition.bottom,
-                                isVisible: true),
-                            series: <CircularSeries>[
-                              // Render pie chart
-                              PieSeries<ChartData, String>(
-                                  dataLabelSettings: const DataLabelSettings(
-                                    isVisible: true,
-                                    // Define como os rótulos de dados são exibidos
-                                    // Aqui, estamos mostrando o nome e o valor
-                                    labelPosition:
-                                        ChartDataLabelPosition.inside,
-                                    labelAlignment: ChartDataLabelAlignment.top,
-                                  ),
-                                  dataSource: chartData,
-                                  pointColorMapper: (ChartData data, _) =>
-                                      data.color,
-                                  xValueMapper: (ChartData data, _) => data.x,
-                                  yValueMapper: (ChartData data, _) => data.y,
-                                  radius: '100%',
-                                  // Segments will explode on tap
-                                  explode: true,
-                                  // First segment will be exploded on initial rendering
-                                  explodeIndex: 1,
-                                  groupMode: CircularChartGroupMode.point,
-                                  // As the grouping mode is point, 2 points will be grouped
-                                  groupTo: 4)
-                            ]),
-                      ),
-                      const Spacer(),
-                      SizedBox(
-                        width: size.width * 0.4,
-                        child: SfCircularChart(
-                            legend: const Legend(
-                                position: LegendPosition.bottom,
-                                isVisible: true),
-                            series: <CircularSeries>[
-                              // Render pie chart
-                              PieSeries<ChartData, String>(
-                                  dataLabelSettings: const DataLabelSettings(
-                                    isVisible: true,
-                                    // Define como os rótulos de dados são exibidos
-                                    // Aqui, estamos mostrando o nome e o valor
-                                    labelPosition:
-                                        ChartDataLabelPosition.inside,
-                                    labelAlignment: ChartDataLabelAlignment.top,
-                                  ),
-                                  dataSource: chartData,
-                                  pointColorMapper: (ChartData data, _) =>
-                                      data.color,
-                                  xValueMapper: (ChartData data, _) => data.x,
-                                  yValueMapper: (ChartData data, _) => data.y,
-                                  radius: '100%',
-                                  // Segments will explode on tap
-                                  explode: true,
-                                  // First segment will be exploded on initial rendering
-                                  explodeIndex: 1,
-                                  groupMode: CircularChartGroupMode.point,
-                                  // As the grouping mode is point, 2 points will be grouped
-                                  groupTo: 4)
-                            ]),
-                      ),
-                    ],
-                  )
+                  //Row(
+                  //  children: [
+                  //    SizedBox(
+                  //      width: size.width * 0.4,
+                  //      child: SfCircularChart(
+                  //          legend: const Legend(
+                  //              position: LegendPosition.bottom,
+                  //              isVisible: true),
+                  //          series: <CircularSeries>[
+                  //            // Render pie chart
+                  //            PieSeries<ChartData, String>(
+                  //                dataLabelSettings: const DataLabelSettings(
+                  //                  isVisible: true,
+                  //                  // Define como os rótulos de dados são exibidos
+                  //                  // Aqui, estamos mostrando o nome e o valor
+                  //                  labelPosition:
+                  //                      ChartDataLabelPosition.inside,
+                  //                  labelAlignment: ChartDataLabelAlignment.top,
+                  //                ),
+                  //                dataSource: chartData,
+                  //                pointColorMapper: (ChartData data, _) =>
+                  //                    data.color,
+                  //                xValueMapper: (ChartData data, _) => data.x,
+                  //                yValueMapper: (ChartData data, _) => data.y,
+                  //                radius: '100%',
+                  //                // Segments will explode on tap
+                  //                explode: true,
+                  //                // First segment will be exploded on initial rendering
+                  //                explodeIndex: 1,
+                  //                groupMode: CircularChartGroupMode.point,
+                  //                // As the grouping mode is point, 2 points will be grouped
+                  //                groupTo: 4)
+                  //          ]),
+                  //    ),
+                  //    const Spacer(),
+                  //    SizedBox(
+                  //      width: size.width * 0.4,
+                  //      child: SfCircularChart(
+                  //          legend: const Legend(
+                  //              position: LegendPosition.bottom,
+                  //              isVisible: true),
+                  //          series: <CircularSeries>[
+                  //            // Render pie chart
+                  //            PieSeries<ChartData, String>(
+                  //                dataLabelSettings: const DataLabelSettings(
+                  //                  isVisible: true,
+                  //                  // Define como os rótulos de dados são exibidos
+                  //                  // Aqui, estamos mostrando o nome e o valor
+                  //                  labelPosition:
+                  //                      ChartDataLabelPosition.inside,
+                  //                  labelAlignment: ChartDataLabelAlignment.top,
+                  //                ),
+                  //                dataSource: chartData,
+                  //                pointColorMapper: (ChartData data, _) =>
+                  //                    data.color,
+                  //                xValueMapper: (ChartData data, _) => data.x,
+                  //                yValueMapper: (ChartData data, _) => data.y,
+                  //                radius: '100%',
+                  //                // Segments will explode on tap
+                  //                explode: true,
+                  //                // First segment will be exploded on initial rendering
+                  //                explodeIndex: 1,
+                  //                groupMode: CircularChartGroupMode.point,
+                  //                // As the grouping mode is point, 2 points will be grouped
+                  //                groupTo: 4)
+                  //          ]),
+                  //    ),
+                  //  ],
+                  //)
                 ],
               ),
             ),

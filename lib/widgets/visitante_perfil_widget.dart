@@ -85,12 +85,12 @@ class VisitaWidget extends ConsumerWidget {
                 const SizedBox(height: 20),
                 RichTextWidget(
                   descricao: 'Celula',
-                  dado: preso!.cell,
+                  dado: celas.where((element) => element.id == preso.cell).first.name,
                 ),
                 const SizedBox(height: 20),
                 RichTextWidget(
                   descricao: 'Bloco',
-                  dado: preso!.block,
+                  dado: blocos.where((element) => element.id == preso.bloco).first.name,
                 ),
                 const SizedBox(height: 20),
                 RichTextWidget(
