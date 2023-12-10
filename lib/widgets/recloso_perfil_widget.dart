@@ -1,7 +1,9 @@
+import 'package:awesome_select/awesome_select.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:mobile_pavpl/app/data/dummy_data.dart';
+import 'package:mobile_pavpl/choices.dart';
 import 'package:mobile_pavpl/providers/global_provider.dart';
 import 'package:mobile_pavpl/widgets/rich_text_widget.dart';
 import 'package:mobile_pavpl/widgets/text_field.dart';
@@ -75,14 +77,53 @@ class ReclusoWidget extends ConsumerWidget {
                   label: 'Crime',
                   hint: '',
                   controller: null
-              ),MRTextField(
-                  borderRadius: 60,
-                  initialValue: preso!.cell,
-                  prefixIcon: Icon(EvaIcons.text),
-                  label: 'Cela',
-                  hint: '',
-                  controller: null
-              ),MRTextField(
+              ),
+              Container(
+                decoration: BoxDecoration(
+                    border: Border.all(color: Colors.grey),
+                    borderRadius: BorderRadius.circular(60)
+                ),
+                child: SmartSelect<Cela?>.single(
+                  title: 'Cela',
+                  selectedValue: celas.where((element) => element.id == preso!.cell).first,
+                  choiceItems: s2Celas,
+                  modalType: S2ModalType.bottomSheet,
+                  onChange: (selected) {
+                    //setState(() => _framework = selected.value);
+                  },
+                  tileBuilder: (context, state) {
+                    return ListTile(
+                      title: Text(state.title ?? ''),
+                      subtitle: Text(
+                        state.selected.toString(),
+                        overflow: TextOverflow.ellipsis,
+                        maxLines: 1,
+                      ),
+                      leading: CircleAvatar(
+                        backgroundColor: Theme.of(context).primaryColor,
+                        child: Text(
+                          state.selected.toString()[0],
+                          style: TextStyle(color: Colors.white),
+                        ),
+                      ),
+                      trailing: const Icon(
+                        Icons.keyboard_arrow_right,
+                        color: Colors.grey,
+                      ),
+                      onTap: state.showModal,
+                    );
+                  },
+                ),
+              ),
+              //MRTextField(
+              //    borderRadius: 60,
+              //    initialValue: preso!.cell,
+              //    prefixIcon: Icon(EvaIcons.text),
+              //    label: 'Cela',
+              //    hint: '',
+              //    controller: null
+              //),
+              MRTextField(
                   borderRadius: 60,
                   initialValue: preso!.block,
                   prefixIcon: Icon(EvaIcons.text),
