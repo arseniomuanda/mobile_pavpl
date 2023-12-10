@@ -91,7 +91,7 @@ class ReclusoWidget extends ConsumerWidget {
                     return InkWell(
                       onTap: state.showModal,
                       child: Container(
-                        padding: const EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(7),
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey),
                             borderRadius: BorderRadius.circular(60)),
@@ -143,7 +143,7 @@ class ReclusoWidget extends ConsumerWidget {
                     return InkWell(
                       onTap: state.showModal,
                       child: Container(
-                        padding: const EdgeInsets.all(5),
+                        padding: const EdgeInsets.all(7),
                         decoration: BoxDecoration(
                             border: Border.all(color: Colors.grey),
                             borderRadius: BorderRadius.circular(60)),
