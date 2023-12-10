@@ -68,49 +68,62 @@ class ReclusoWidget extends ConsumerWidget {
                   prefixIcon: Icon(EvaIcons.text),
                   label: 'Nome',
                   hint: '',
-                  controller: null
-              ),
+                  controller: null),
               MRTextField(
                   borderRadius: 60,
                   initialValue: preso!.crime,
                   prefixIcon: Icon(EvaIcons.text),
                   label: 'Crime',
                   hint: '',
-                  controller: null
-              ),
-              Container(
-                decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(60)
-                ),
+                  controller: null),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 10),
                 child: SmartSelect<Cela?>.single(
                   title: 'Cela',
-                  selectedValue: celas.where((element) => element.id == preso!.cell).first,
+                  selectedValue:
+                      celas.where((element) => element.id == preso!.cell).first,
                   choiceItems: s2Celas,
                   modalType: S2ModalType.bottomSheet,
                   onChange: (selected) {
                     //setState(() => _framework = selected.value);
                   },
                   tileBuilder: (context, state) {
-                    return ListTile(
-                      title: Text(state.title ?? ''),
-                      subtitle: Text(
-                        state.selected.toString(),
-                        overflow: TextOverflow.ellipsis,
-                        maxLines: 1,
-                      ),
-                      leading: CircleAvatar(
-                        backgroundColor: Theme.of(context).primaryColor,
-                        child: Text(
-                          state.selected.toString()[0],
-                          style: TextStyle(color: Colors.white),
+                    return InkWell(
+                      onTap: state.showModal,
+                      child: Container(
+                        padding: const EdgeInsets.all(5),
+                        decoration: BoxDecoration(
+                            border: Border.all(color: Colors.grey),
+                            borderRadius: BorderRadius.circular(60)),
+                        child: Row(
+                          children: [
+                            CircleAvatar(
+                              backgroundColor: Theme.of(context).primaryColor,
+                              child: Text(
+                                state.selected.toString()[0],
+                                style: const TextStyle(color: Colors.white),
+                              ),
+                            ),
+                            const SizedBox(width: 20),
+                            Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(state.title ?? ''),
+                                Text(
+                                  state.selected.toString(),
+                                  overflow: TextOverflow.ellipsis,
+                                  maxLines: 1,
+                                )
+                              ],
+                            ),
+                            const Spacer(),
+                            const Icon(
+                              Icons.keyboard_arrow_right,
+                              color: Colors.grey,
+                            ),
+                          ],
                         ),
                       ),
-                      trailing: const Icon(
-                        Icons.keyboard_arrow_right,
-                        color: Colors.grey,
-                      ),
-                      onTap: state.showModal,
                     );
                   },
                 ),
@@ -129,14 +142,19 @@ class ReclusoWidget extends ConsumerWidget {
                   prefixIcon: Icon(EvaIcons.text),
                   label: 'Bloco',
                   hint: '',
-                  controller: null
-              ),
+                  controller: null),
               const Spacer(),
               Align(
                 alignment: Alignment.centerRight,
-                child: ElevatedButton(onPressed: (){}, style: ElevatedButton.styleFrom(
-                    minimumSize: const Size(200, 60)
-                ), child: const Text('Salvar', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),)),
+                child: ElevatedButton(
+                    onPressed: () {},
+                    style: ElevatedButton.styleFrom(
+                        minimumSize: const Size(200, 60)),
+                    child: const Text(
+                      'Salvar',
+                      style:
+                          TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+                    )),
               )
             ],
           ),
@@ -145,5 +163,3 @@ class ReclusoWidget extends ConsumerWidget {
     );
   }
 }
-
-
