@@ -35,7 +35,7 @@ class _UserPerfilPageState extends State<UserPerfilPage> {
 
   var reNewPassController = TextEditingController();
 
-  String? _acesso = 'flu';
+  String? _acesso = '';
 
   @override
   Widget build(BuildContext context) {
