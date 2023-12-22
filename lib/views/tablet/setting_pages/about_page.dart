@@ -18,7 +18,8 @@ class AboutPage extends StatelessWidget {
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           Text(
-            'Nome da Empresa',
+            'Plataforma de Agendamento de Visitas à reclusos do Sistema Penitenciário de Luanda',
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 24.0,
               fontWeight: FontWeight.bold,
@@ -41,8 +42,8 @@ class AboutPage extends StatelessWidget {
           ),
           SizedBox(height: 8.0),
           Text(
-            'Lorem ipsum dolor sit amet, consectetur adipiscing elit. '
-            'Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.',
+            'A Plataforma de Agendamento de Visitas à reclusos do Sistema Penitenciário de Luanda é um serviço online que permite aos familiares e amigos dos presos marcar as suas visitas de forma rápida e fácil. O objetivo é facilitar o contato entre os reclusos e os seus entes queridos, garantindo a segurança e a ordem nas unidades prisionais Para utilizar a plataforma, é necessário fazer um cadastro prévio, informando os dados pessoais e o número do processo do recluso que se pretende visitar',
+            textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 16.0,
             ),

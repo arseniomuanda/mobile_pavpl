@@ -14,7 +14,7 @@ class UserPerfilPage extends StatefulWidget {
 
 class _UserPerfilPageState extends State<UserPerfilPage> {
 
-  List<S2Choice<String>> acessps = [
+  List<S2Choice<String>> acessos = [
     S2Choice<String>(value: 'Admin', title: 'Admin'),
     S2Choice<String>(value: 'Secretario', title: 'Secretario'),
     S2Choice<String>(value: 'Super Admin', title: 'Super Admin'),
@@ -35,7 +35,7 @@ class _UserPerfilPageState extends State<UserPerfilPage> {
 
   var reNewPassController = TextEditingController();
 
-  String? _framework = 'flu';
+  String? _acesso = 'flu';
 
   @override
   Widget build(BuildContext context) {
@@ -98,7 +98,7 @@ class _UserPerfilPageState extends State<UserPerfilPage> {
               ),
               Expanded(
                 child: Container(
-                  height: 60,
+                  height: 55,
                   decoration: BoxDecoration(
                     border: Border.all(color: Colors.grey),
                     borderRadius: BorderRadius.circular(60)
@@ -107,11 +107,11 @@ class _UserPerfilPageState extends State<UserPerfilPage> {
                     padding: const EdgeInsets.only(bottom: 30.0),
                     child: SmartSelect<String?>.single(
                       title: 'Acesso',
-                      selectedValue: _framework,
-                      choiceItems: choices.frameworks,
+                      selectedValue: _acesso,
+                      choiceItems: acessos,
                       modalType: S2ModalType.popupDialog,
                       onChange: (selected) {
-                        setState(() => _framework = selected.value);
+                        setState(() => _acesso = selected.value);
                       },
                       tileBuilder: (context, state) {
                         return ListTile(

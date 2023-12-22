@@ -7,7 +7,6 @@ import 'package:mobile_pavpl/widgets/recloso_perfil_widget.dart';
 import 'package:mobile_pavpl/widgets/text_field.dart';
 import 'package:mobile_pavpl/widgets/visitante_perfil_widget.dart';
 
-
 class ReclusoPage extends ConsumerWidget {
   final Size size;
   final codController = TextEditingController();

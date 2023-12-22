@@ -9,14 +9,12 @@ class ChartData {
 
 class ChartData1 {
   ChartData1(this.x, this.y);
-
   final String x;
   final double y;
 }
 
 class SalesData {
   SalesData(this.month, this.sales, {this.annotation});
-
   final String month;
   final double? sales;
   final String? annotation;
