@@ -99,18 +99,6 @@ List<Map<String, String>> cars = [
   },
   {
     'value': 'honda-hrv',
-    'title': 'Honda H-RV',
-    'brand': 'Honda',
-    'body': 'SUV'
-  },
-  {
-    'value': 'mercedes-gcl',
-    'title': 'Mercedes-Benz G-class',
-    'brand': 'Mercedes',
-    'body': 'SUV'
-  },
-  {
-    'value': 'mercedes-gle',
     'title': 'Mercedes-Benz GLE',
     'brand': 'Mercedes',
     'body': 'SUV'

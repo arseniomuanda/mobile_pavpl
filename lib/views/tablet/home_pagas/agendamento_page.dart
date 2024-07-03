@@ -96,6 +96,7 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
         Expanded(
             child: Column(
               children: [
+                const SizedBox(height: 30,),
                 TableCalendar<Event>(
                   firstDay: kFirstDay,
                   lastDay: kLastDay,
@@ -124,7 +125,7 @@ class _AgendamentoPageState extends State<AgendamentoPage> {
                     _focusedDay = focusedDay;
                   },
                 ),
-                const SizedBox(height: 8.0),
+                const SizedBox(height: 100.0),
                 Expanded(
                   child: ValueListenableBuilder<List<Event>>(
                     valueListenable: _selectedEvents,
