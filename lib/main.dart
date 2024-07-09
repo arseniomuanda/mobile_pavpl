@@ -35,7 +35,7 @@ class PavplApp extends StatelessWidget {
       initialRoute: MRRoutes.splash,
       debugShowCheckedModeBanner: false,
       theme: ThemeData(
-        textTheme: GoogleFonts.latoTextTheme(),
+        textTheme: GoogleFonts.robotoTextTheme(TextTheme()),
         timePickerTheme:
             const TimePickerThemeData(backgroundColor: Colors.white),
         colorScheme: ColorScheme(

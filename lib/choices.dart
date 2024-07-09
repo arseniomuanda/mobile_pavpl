@@ -1,4 +1,4 @@
-import 'package:awesome_select/awesome_select.dart' show S2Choice;
+import 'package:flutter_awesome_select_clone/flutter_awesome_select.dart';
 import 'package:mobile_pavpl/app/data/dummy_data.dart';
 
 List<S2Choice<String>> days = [

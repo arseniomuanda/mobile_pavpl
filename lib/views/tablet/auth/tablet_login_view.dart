@@ -1,4 +1,3 @@
-import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:mobile_pavpl/app/routing/route_handler.dart';
@@ -37,6 +36,7 @@ class _TabletLoginPageState extends State<TabletLoginPage> {
                   children: [
                     Expanded(
                       child: SizedBox(
+                        width: MediaQuery.sizeOf(context).width * 0.3,
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
@@ -63,7 +63,7 @@ class _TabletLoginPageState extends State<TabletLoginPage> {
                           MRTextField(
                             isPassword: true,
                             controller: passController,
-                            label: "Palavra Pass",
+                            label: "Senha",
                             hint: "****",
                           ),
                           Row(
