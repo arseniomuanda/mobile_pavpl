@@ -1,8 +1,7 @@
-import 'package:awesome_select/awesome_select.dart';
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_awesome_select_clone/flutter_awesome_select.dart';
 import 'package:mobile_pavpl/widgets/text_field.dart';
-import 'package:mobile_pavpl/choices.dart' as choices;
 
 class UserPerfilPage extends StatefulWidget {
   UserPerfilPage({super.key, required this.size});
@@ -13,7 +12,6 @@ class UserPerfilPage extends StatefulWidget {
 }
 
 class _UserPerfilPageState extends State<UserPerfilPage> {
-
   List<S2Choice<String>> acessos = [
     S2Choice<String>(value: 'Admin', title: 'Admin'),
     S2Choice<String>(value: 'Secretario', title: 'Secretario'),
@@ -52,47 +50,53 @@ class _UserPerfilPageState extends State<UserPerfilPage> {
               alignment: Alignment.topLeft,
               child: SizedBox(
                   width: 150,
-                  child: Image.asset('assets/recluso_photo.jpg',fit: BoxFit.cover,)),
+                  child: Image.asset(
+                    'assets/recluso_photo.jpg',
+                    fit: BoxFit.cover,
+                  )),
             ),
           ),
           Row(
             children: [
-              Expanded(child: MRTextField(
-                  borderRadius: 60,
-                  prefixIcon: Icon(EvaIcons.text),
-                  label: 'Nome',
-                  hint: '',
-                  controller: nameController)),
+              Expanded(
+                  child: MRTextField(
+                      borderRadius: 60,
+                      prefixIcon: Icon(EvaIcons.text),
+                      label: 'Nome',
+                      hint: '',
+                      controller: nameController)),
               const SizedBox(
                 width: 20,
               ),
-              Expanded(child: MRTextField(
-                  borderRadius: 60,
-                  prefixIcon: Icon(EvaIcons.text),
-                  label: 'BI',
-                  hint: '',
-                  controller: biController)),
+              Expanded(
+                  child: MRTextField(
+                      borderRadius: 60,
+                      prefixIcon: Icon(EvaIcons.text),
+                      label: 'BI',
+                      hint: '',
+                      controller: biController)),
             ],
           ),
 
           Row(
             children: [
-
-              Expanded(child: MRTextField(
-                  borderRadius: 60,
-                  prefixIcon: Icon(EvaIcons.text),
-                  label: 'Nascimento',
-                  hint: '',
-                  controller: nascController)),
+              Expanded(
+                  child: MRTextField(
+                      borderRadius: 60,
+                      prefixIcon: Icon(EvaIcons.text),
+                      label: 'Nascimento',
+                      hint: '',
+                      controller: nascController)),
               const SizedBox(
                 width: 20,
               ),
-              Expanded(child: MRTextField(
-                  borderRadius: 60,
-                  prefixIcon: Icon(EvaIcons.text),
-                  label: 'Email',
-                  hint: '',
-                  controller: emailController)),
+              Expanded(
+                  child: MRTextField(
+                      borderRadius: 60,
+                      prefixIcon: Icon(EvaIcons.text),
+                      label: 'Email',
+                      hint: '',
+                      controller: emailController)),
               const SizedBox(
                 width: 20,
               ),
@@ -100,9 +104,8 @@ class _UserPerfilPageState extends State<UserPerfilPage> {
                 child: Container(
                   height: 55,
                   decoration: BoxDecoration(
-                    border: Border.all(color: Colors.grey),
-                    borderRadius: BorderRadius.circular(60)
-                  ),
+                      border: Border.all(color: Colors.grey),
+                      borderRadius: BorderRadius.circular(60)),
                   child: Padding(
                     padding: const EdgeInsets.only(bottom: 30.0),
                     child: SmartSelect<String?>.single(
@@ -139,37 +142,37 @@ class _UserPerfilPageState extends State<UserPerfilPage> {
                   ),
                 ),
               )
-
             ],
           ),
           Row(
             children: [
-
-              Expanded(child: MRTextField(
-                  borderRadius: 60,
-                  prefixIcon: Icon(EvaIcons.lock),
-                  label: 'Palavra Pass antida',
-                  hint: '',
-                  controller: oldPassController)),
+              Expanded(
+                  child: MRTextField(
+                      borderRadius: 60,
+                      prefixIcon: Icon(EvaIcons.lock),
+                      label: 'Palavra Pass antida',
+                      hint: '',
+                      controller: oldPassController)),
               const SizedBox(
                 width: 20,
               ),
-              Expanded(child: MRTextField(
-                  borderRadius: 60,
-                  prefixIcon: Icon(EvaIcons.lock),
-                  label: 'Palavra Pass antida',
-                  hint: '',
-                  controller: reNewPassController)),
+              Expanded(
+                  child: MRTextField(
+                      borderRadius: 60,
+                      prefixIcon: Icon(EvaIcons.lock),
+                      label: 'Palavra Pass antida',
+                      hint: '',
+                      controller: reNewPassController)),
               const SizedBox(
                 width: 20,
               ),
-              Expanded(child: MRTextField(
-                  borderRadius: 60,
-                  prefixIcon: Icon(EvaIcons.lock),
-                  label: 'Nova Palavra Pass ',
-                  hint: '',
-                  controller: newPassController)),
-
+              Expanded(
+                  child: MRTextField(
+                      borderRadius: 60,
+                      prefixIcon: Icon(EvaIcons.lock),
+                      label: 'Nova Palavra Pass ',
+                      hint: '',
+                      controller: newPassController)),
             ],
           ),
           const Spacer(),
@@ -177,9 +180,14 @@ class _UserPerfilPageState extends State<UserPerfilPage> {
             alignment: Alignment.topRight,
             child: Padding(
               padding: const EdgeInsets.all(8.0),
-              child: ElevatedButton(onPressed: (){}, style: ElevatedButton.styleFrom(
-                  minimumSize: const Size(200, 60)
-              ), child: const Text('Salvar', style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),)),
+              child: ElevatedButton(
+                  onPressed: () {},
+                  style: ElevatedButton.styleFrom(
+                      minimumSize: const Size(200, 60)),
+                  child: const Text(
+                    'Salvar',
+                    style: TextStyle(fontWeight: FontWeight.w700, fontSize: 20),
+                  )),
             ),
           )
           // Adicione mais informações conforme necessário
