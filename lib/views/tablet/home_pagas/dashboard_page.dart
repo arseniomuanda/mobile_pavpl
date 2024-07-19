@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobile_pavpl/app/helpers/text_helper.dart';
-import 'package:mobile_pavpl/app/models/chart_data.dart';
-import 'package:mobile_pavpl/providers/global_provider.dart';
-import 'package:mobile_pavpl/widgets/assider_widget.dart';
-import 'package:mobile_pavpl/widgets/reclusos_data_grid_widget.dart';
-import 'package:mobile_pavpl/widgets/text_field.dart';
-import 'package:mobile_pavpl/widgets/visitante_perfil_widget.dart';
+import 'package:pavpl_app/app/helpers/text_helper.dart';
+import 'package:pavpl_app/app/models/chart_data.dart';
+import 'package:pavpl_app/providers/global_provider.dart';
+import 'package:pavpl_app/widgets/assider_widget.dart';
+import 'package:pavpl_app/widgets/reclusos_data_grid_widget.dart';
+import 'package:pavpl_app/widgets/text_field.dart';
+import 'package:pavpl_app/widgets/visitante_perfil_widget.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class DashbordPage extends ConsumerWidget {
@@ -100,7 +100,7 @@ class DashbordPage extends ConsumerWidget {
                               legend: const Legend(
                                   position: LegendPosition.bottom, isVisible: true),
                               primaryXAxis: CategoryAxis(),
-                              series: <ChartSeries>[
+                              series: <CartesianSeries>[
                                 SplineAreaSeries<SalesData, String>(
                                   dataSource: <SalesData>[
                                     SalesData('Jan', 10),

@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_pavpl/views/phone/auth/login_view.dart';
-import 'package:mobile_pavpl/views/phone/auth/recover_pass_view.dart';
-import 'package:mobile_pavpl/views/phone/auth/register_view.dart';
-import 'package:mobile_pavpl/views/phone/home_view.dart';
-import 'package:mobile_pavpl/views/phone/profile.dart';
-import 'package:mobile_pavpl/views/phone/scheduling/scheduling_profile_view.dart';
-import 'package:mobile_pavpl/views/phone/scheduling/scheduling_view.dart';
-import 'package:mobile_pavpl/views/splash_view.dart';
-import 'package:mobile_pavpl/views/tablet/auth/tablet_login_view.dart';
-import 'package:mobile_pavpl/views/tablet/auth/tablet_recover_pass_view.dart';
-import 'package:mobile_pavpl/views/tablet/tablet_home_view.dart';
+import 'package:pavpl_app/views/phone/auth/login_view.dart';
+import 'package:pavpl_app/views/phone/auth/recover_pass_view.dart';
+import 'package:pavpl_app/views/phone/auth/register_view.dart';
+import 'package:pavpl_app/views/phone/home_view.dart';
+import 'package:pavpl_app/views/phone/profile.dart';
+import 'package:pavpl_app/views/phone/scheduling/scheduling_profile_view.dart';
+import 'package:pavpl_app/views/phone/scheduling/scheduling_view.dart';
+import 'package:pavpl_app/views/splash_view.dart';
+import 'package:pavpl_app/views/tablet/auth/tablet_login_view.dart';
+import 'package:pavpl_app/views/tablet/auth/tablet_recover_pass_view.dart';
+import 'package:pavpl_app/views/tablet/tablet_home_view.dart';
 
 abstract class MRRoutes {
   static const String home = '/home';

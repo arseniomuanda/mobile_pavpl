@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_pavpl/app/helpers/text_helper.dart';
-import 'package:mobile_pavpl/app/routing/route_handler.dart';
+import 'package:pavpl_app/app/helpers/text_helper.dart';
+import 'package:pavpl_app/app/routing/route_handler.dart';
 
 class ScheduleProfilePage extends StatefulWidget {
   const ScheduleProfilePage({super.key});
@@ -16,6 +16,7 @@ class _ScheduleProfilePageState extends State<ScheduleProfilePage> {
       initialIndex: 0,
       length: 3,
       child: Scaffold(
+        backgroundColor: Colors.white,
         appBar: AppBar(
           centerTitle: true,
           title: RichText(
@@ -113,7 +114,7 @@ class _ScheduleProfilePageState extends State<ScheduleProfilePage> {
                   ElevatedButton(
                     child: Text(
                       "Cancelar",
-                      style: fonte2(context, isButton: true),
+                      style: fonte2(context, isButton: false),
                     ),
                     onPressed: () => Navigator.of(context)
                         .pushReplacementNamed(MRRoutes.home),
@@ -122,7 +123,7 @@ class _ScheduleProfilePageState extends State<ScheduleProfilePage> {
                   ElevatedButton(
                     child: Text(
                       "Adiar",
-                      style: fonte2(context, isButton: true),
+                      style: fonte2(context, isButton: false),
                     ),
                     onPressed: () => Navigator.of(context)
                         .pushReplacementNamed(MRRoutes.scheduling),

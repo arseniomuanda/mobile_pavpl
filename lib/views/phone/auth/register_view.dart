@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile_pavpl/app/routing/route_handler.dart';
-import 'package:mobile_pavpl/widgets/text_field.dart';
+import 'package:pavpl_app/app/routing/route_handler.dart';
+import 'package:pavpl_app/widgets/text_field.dart';
 
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});

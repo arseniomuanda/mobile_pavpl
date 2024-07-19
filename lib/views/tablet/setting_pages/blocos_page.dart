@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_pavpl/widgets/settings/blocos_data_grid_widget.dart';
-import 'package:mobile_pavpl/widgets/text_field.dart';
-import 'package:mobile_pavpl/choices.dart' as choices;
+import 'package:pavpl_app/widgets/settings/blocos_data_grid_widget.dart';
+import 'package:pavpl_app/widgets/text_field.dart';
+import 'package:pavpl_app/choices.dart' as choices;
 
 class BlocosPage extends StatefulWidget {
   BlocosPage({super.key});
