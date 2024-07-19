@@ -1,7 +1,7 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_awesome_select_clone/flutter_awesome_select.dart';
-import 'package:mobile_pavpl/widgets/text_field.dart';
+import 'package:pavpl_app/widgets/text_field.dart';
 
 class UserPerfilPage extends StatefulWidget {
   UserPerfilPage({super.key, required this.size});

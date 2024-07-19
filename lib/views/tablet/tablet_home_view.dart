@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile_pavpl/providers/global_provider.dart';
-import 'package:mobile_pavpl/views/tablet/home_pagas/agendamento_page.dart';
-import 'package:mobile_pavpl/views/tablet/setting_pages/config_page.dart';
-import 'package:mobile_pavpl/views/tablet/home_pagas/dashboard_page.dart';
-import 'package:mobile_pavpl/views/tablet/home_pagas/reclusos_page.dart';
-import 'package:mobile_pavpl/views/tablet/home_pagas/visitas_page.dart';
+import 'package:pavpl_app/providers/global_provider.dart';
+import 'package:pavpl_app/views/tablet/home_pagas/agendamento_page.dart';
+import 'package:pavpl_app/views/tablet/setting_pages/config_page.dart';
+import 'package:pavpl_app/views/tablet/home_pagas/dashboard_page.dart';
+import 'package:pavpl_app/views/tablet/home_pagas/reclusos_page.dart';
+import 'package:pavpl_app/views/tablet/home_pagas/visitas_page.dart';
 import 'package:syncfusion_flutter_charts/charts.dart';
 
 class TabletHomePage extends ConsumerStatefulWidget {

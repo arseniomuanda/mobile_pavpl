@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_pavpl/app/helpers/text_helper.dart';
-import 'package:mobile_pavpl/app/helpers/time_helper.dart';
-import 'package:mobile_pavpl/app/routing/route_handler.dart';
-import 'package:mobile_pavpl/widgets/text_field.dart';
+import 'package:pavpl_app/app/helpers/text_helper.dart';
+import 'package:pavpl_app/app/helpers/time_helper.dart';
+import 'package:pavpl_app/app/routing/route_handler.dart';
+import 'package:pavpl_app/widgets/text_field.dart';
 
 class SchedulingPage extends StatefulWidget {
   const SchedulingPage({super.key});
@@ -18,6 +18,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         centerTitle: true,
         title: RichText(
@@ -80,7 +81,7 @@ class _SchedulingPageState extends State<SchedulingPage> {
                       Navigator.of(context).pushNamed(MRRoutes.scheduleProfile),
                   child: Text(
                     'Confirmar',
-                    style: fonte(context, isButton: true),
+                    style: fonte(context, isButton: false),
                   )),
             ),
           ],

@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobile_pavpl/providers/global_provider.dart';
-import 'package:mobile_pavpl/widgets/assider_widget.dart';
-import 'package:mobile_pavpl/widgets/reclusos_data_grid_widget.dart';
-import 'package:mobile_pavpl/widgets/recloso_perfil_widget.dart';
-import 'package:mobile_pavpl/widgets/text_field.dart';
-import 'package:mobile_pavpl/widgets/visitante_perfil_widget.dart';
+import 'package:pavpl_app/providers/global_provider.dart';
+import 'package:pavpl_app/widgets/assider_widget.dart';
+import 'package:pavpl_app/widgets/reclusos_data_grid_widget.dart';
+import 'package:pavpl_app/widgets/recloso_perfil_widget.dart';
+import 'package:pavpl_app/widgets/text_field.dart';
+import 'package:pavpl_app/widgets/visitante_perfil_widget.dart';
 
 class ReclusoPage extends ConsumerWidget {
   final Size size;

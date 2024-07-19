@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile_pavpl/app/routing/route_handler.dart';
-import 'package:mobile_pavpl/widgets/text_field.dart';
+import 'package:pavpl_app/app/routing/route_handler.dart';
+import 'package:pavpl_app/widgets/text_field.dart';
 
 class TabletLoginPage extends StatefulWidget {
   const TabletLoginPage({super.key});
@@ -27,9 +27,10 @@ class _TabletLoginPageState extends State<TabletLoginPage> {
                     image: AssetImage("assets/tema/fundo_1.jpg"))),
           ),
           Center(
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 380.0),
+            child: SizedBox(
+              width: MediaQuery.of(context).size.width * 0.7,
               child: Card(
+                color: Colors.white,
                   child: Padding(
                 padding: const EdgeInsets.all(18.0),
                 child: Row(

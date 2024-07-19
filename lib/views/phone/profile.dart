@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile_pavpl/app/routing/route_handler.dart';
-import 'package:mobile_pavpl/widgets/text_field.dart';
+import 'package:pavpl_app/app/routing/route_handler.dart';
+import 'package:pavpl_app/widgets/text_field.dart';
 
 class ProfilePage extends StatefulWidget {
   const ProfilePage({super.key});
@@ -32,6 +32,7 @@ class _ProfilePageState extends State<ProfilePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         elevation: 0,
         iconTheme: IconThemeData(color: Theme.of(context).colorScheme.primary),
@@ -40,6 +41,7 @@ class _ProfilePageState extends State<ProfilePage> {
       body: SingleChildScrollView(
         child: Center(
           child: Card(
+            color: Colors.white,
               child: Padding(
             padding: const EdgeInsets.all(8.0),
             child: Column(

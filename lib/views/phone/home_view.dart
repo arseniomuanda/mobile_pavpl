@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:mobile_pavpl/app/routing/route_handler.dart';
-import 'package:mobile_pavpl/widgets/text_field.dart';
+import 'package:pavpl_app/app/routing/route_handler.dart';
+import 'package:pavpl_app/widgets/text_field.dart';
 
 
 class HomePage extends StatefulWidget {
@@ -27,6 +27,7 @@ class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
       appBar: AppBar(
         automaticallyImplyLeading: false,
         actions: [
@@ -208,7 +209,7 @@ class _HomePageState extends State<HomePage> {
                                   .pushNamed(MRRoutes.scheduling),
                               child: Text(
                                 'Visitar',
-                                style: fonte(context, isButton: true),
+                                style: fonte(context, isButton: false),
                               )),
                         )
                       ]),

@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobile_pavpl/providers/global_provider.dart';
-import 'package:mobile_pavpl/views/tablet/setting_pages/acessos_page.dart';
-import 'package:mobile_pavpl/views/tablet/setting_pages/blocos_page.dart';
-import 'package:mobile_pavpl/views/tablet/setting_pages/celas_page.dart';
-import 'package:mobile_pavpl/views/tablet/setting_pages/user_list_page.dart';
-import 'package:mobile_pavpl/views/tablet/setting_pages/user_perfil_page.dart';
-import 'package:mobile_pavpl/widgets/assider_widget.dart';
-import 'package:mobile_pavpl/views/tablet/setting_pages/about_page.dart';
-import 'package:mobile_pavpl/widgets/settings/menu_config_widget.dart';
+import 'package:pavpl_app/providers/global_provider.dart';
+import 'package:pavpl_app/views/tablet/setting_pages/acessos_page.dart';
+import 'package:pavpl_app/views/tablet/setting_pages/blocos_page.dart';
+import 'package:pavpl_app/views/tablet/setting_pages/celas_page.dart';
+import 'package:pavpl_app/views/tablet/setting_pages/user_list_page.dart';
+import 'package:pavpl_app/views/tablet/setting_pages/user_perfil_page.dart';
+import 'package:pavpl_app/widgets/assider_widget.dart';
+import 'package:pavpl_app/views/tablet/setting_pages/about_page.dart';
+import 'package:pavpl_app/widgets/settings/menu_config_widget.dart';
 
 class ConfigPage extends ConsumerWidget {
   final Size size;

@@ -2,9 +2,9 @@ import 'package:faker/faker.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:intl/intl.dart';
-import 'package:mobile_pavpl/app/core/consts.dart';
-import 'package:mobile_pavpl/app/data/dummy_data.dart';
-import 'package:mobile_pavpl/providers/global_provider.dart';
+import 'package:pavpl_app/app/core/consts.dart';
+import 'package:pavpl_app/app/data/dummy_data.dart';
+import 'package:pavpl_app/providers/global_provider.dart';
 import 'package:syncfusion_flutter_core/theme.dart';
 import 'package:syncfusion_flutter_datagrid/datagrid.dart';
 

@@ -1,8 +1,8 @@
 import 'package:eva_icons_flutter/eva_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobile_pavpl/app/data/dummy_data.dart';
-import 'package:mobile_pavpl/providers/global_provider.dart';
+import 'package:pavpl_app/app/data/dummy_data.dart';
+import 'package:pavpl_app/providers/global_provider.dart';
 
 class MenuConfigWidget extends ConsumerWidget {
   MenuConfigWidget({

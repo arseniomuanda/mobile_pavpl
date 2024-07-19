@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:mobile_pavpl/app/data/dummy_data.dart';
+import 'package:pavpl_app/app/data/dummy_data.dart';
 
 var visitaProvider = StateProvider((ref) => Visita());
 

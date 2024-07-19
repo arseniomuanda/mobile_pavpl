@@ -1,5 +1,5 @@
 import 'package:flutter_awesome_select_clone/flutter_awesome_select.dart';
-import 'package:mobile_pavpl/app/data/dummy_data.dart';
+import 'package:pavpl_app/app/data/dummy_data.dart';
 
 List<S2Choice<String>> days = [
   S2Choice<String>(value: 'mon', title: 'Monday'),

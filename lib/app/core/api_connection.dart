@@ -1,6 +1,6 @@
 import 'dart:developer';
 import 'package:dio/dio.dart';
-import 'package:mobile_pavpl/app/models/base_error.model.dart';
+import 'package:pavpl_app/app/models/base_error.model.dart';
 
 // TODO: #3 #2 Criar uma funçao para fazer logout e bloquar a conta sempre que estiver logado em 2 dispositivos ao mesmo tempo
 abstract class Endpoints {

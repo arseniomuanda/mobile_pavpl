@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mobile_pavpl/widgets/settings/users_data_grid_widget.dart';
-import 'package:mobile_pavpl/widgets/text_field.dart';
+import 'package:pavpl_app/widgets/settings/users_data_grid_widget.dart';
+import 'package:pavpl_app/widgets/text_field.dart';
 
 class UserListPage extends StatefulWidget {
   UserListPage({super.key});
